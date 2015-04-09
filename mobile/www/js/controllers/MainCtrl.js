@@ -20,7 +20,7 @@ function LoginCtrl($scope, $ionicModal, $state) {
     }
 
     $scope.login = function() {
-        $state.go('app.attendance');
+        $state.go('courses');
     }
 }
 
@@ -44,6 +44,6 @@ function AppCtrl($scope, $ionicModal, $timeout) {
 }
 
 
-angular.module('everedu.controllers', [])
+angular.module('everedu.MainCtrl', [])
     .controller('AppCtrl', AppCtrl)
     .controller('LoginCtrl', LoginCtrl);

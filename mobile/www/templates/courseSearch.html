@@ -1,0 +1,20 @@
+<ion-modal-view>
+<ion-header-bar class="bar-balanced">
+<h1 class="title">Course Search</h1>
+<div class="buttons">
+  <button class="button button-clear" ng-click="closesearchModal()">Close</button>
+</div>
+</ion-header-bar>
+<ion-content>
+<form ng-submit="searchCourse()">
+  <div class="item item-input-inset">
+    <label class="item-input-wrapper">
+      <input type="text" placeholder="Course Number">
+    </label>
+    <button class="button button-small">
+      Submit
+    </button>
+  </div>
+</form>
+</ion-content>
+</ion-modal-view>

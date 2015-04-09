@@ -1,4 +1,4 @@
-angular.module('everedu', ['ionic', 'everedu.controllers'])
+angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
