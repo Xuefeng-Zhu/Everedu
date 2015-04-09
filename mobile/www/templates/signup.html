@@ -1,9 +1,12 @@
-<ion-view>
-<ion-header-bar class="bar-balanced">
-<h1 class="title">Login</h1>
+<ion-modal-view>
+<ion-header-bar class="bar-positive">
+<h1 class="title">Sign up</h1>
+<div class="buttons">
+  <button class="button button-clear" ng-click="closeSignup()">Close</button>
+</div>
 </ion-header-bar>
 <ion-content>
-<form>
+<form ng-submit="createAccount()">
   <div class="list">
     <label class="item item-input item-floating-label">
       <span class="input-label">Email</span>
@@ -15,9 +18,8 @@
     </label>
   </div>
   <div class="padding">
-    <button class="button button-block" ng-click="login()">Log in</button>
-    <button class="button button-block button-positive" ng-click="openSignup()">Sign up</button>
+    <button class="button button-block button-balanced" type="submit">Create Account</button>
   </div>
 </form>
 </ion-content>
-</ion-view>
+</ion-modal-view>
