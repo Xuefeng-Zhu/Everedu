@@ -13,7 +13,7 @@
   </ion-header-bar>
   <ion-content>
     <ion-list show-delete="showDelete">
-      <ion-item ng-repeat="course in courses" ui-sref="app.attendance({courseID: course.courseID})" class="item-remove-animate">
+      <ion-item ng-repeat="course in courses" ui-sref="app.info({courseID: course.courseID})" class="item-remove-animate">
         {{course.courseID}}
         <span class="item-note">
           {{course.time}} {{course.day}}

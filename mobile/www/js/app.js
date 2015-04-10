@@ -33,6 +33,14 @@ angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl', '
         templateUrl: 'templates/menu.html',
         controller: 'AppCtrl'
     })
+    .state('app.info', {
+        url: '/info',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/details/info.html',
+            }
+        }
+    })
     .state('app.attendance', {
         url: '/attendance',
         views: {

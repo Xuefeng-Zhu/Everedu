@@ -1,0 +1,45 @@
+<ion-view view-title="Course Info">
+	<ion-content>
+		<!-- Accountment Card -->
+		<div class="card">
+			<div class="item item-divider">
+				Announcement
+			</div>
+			<div class="item item-text-wrap">
+				{{course.announcement}}
+			</div>
+		</div>
+		<!-- Course Description Card -->
+		<div class="card">
+			<div class="item item-divider">
+				Course Description
+			</div>
+			<div class="item item-text-wrap">
+				<a class="item item-icon-left">
+					<i class="icon ion-pound"></i>
+					{{course.courseID}}
+				</a>
+				<a class="item item-icon-left">
+					<i class="icon ion-information"></i>
+					{{course.fullName}}
+				</a>
+				<a class="item item-icon-left">
+					<i class="icon ion-person"></i>
+					{{course.instructor}}
+				</a>
+				<a class="item item-icon-left">
+					<i class="icon ion-location"></i>
+					{{course.location}}
+				</a>
+				<a class="item item-icon-left">
+					<i class="icon ion-calendar"></i>
+					{{course.day}}
+				</a>
+				<a class="item item-icon-left">
+					<i class="icon ion-clock"></i>
+					{{course.time}}
+				</a>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

@@ -26,21 +26,17 @@ function LoginCtrl($scope, $ionicModal, $state) {
 
 
 function AppCtrl($scope, $ionicModal, $timeout) {
-    // Open the login modal
-    $scope.login = function() {
-        $scope.modal.show();
-    };
-
-    // Perform the login action when the user submits the login form
-    $scope.doLogin = function() {
-        console.log('Doing login', $scope.loginData);
-
-        // Simulate a login delay. Remove this and replace with your login
-        // code if using a login system
-        $timeout(function() {
-            $scope.closeLogin();
-        }, 1000);
-    };
+    $scope.course = {
+        courseID: 'CS423',
+        fullName: 'Operating Systems Design',
+        instructor: 'Tarek Abdelzaher',
+        location: '4126 Siebel Center',
+        day: 'MWF',
+        time: '10:00am-10:50am',
+        announcement: 'Update: NSF-sponsored (paid) research and development project\
+         opportunities are available for undergraduate students on selected topics. \
+         Contact instructor for detail. Graduate students interested in RAships are also welcome'
+    }
 }
 
 
