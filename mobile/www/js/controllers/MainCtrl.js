@@ -29,8 +29,8 @@ function LoginCtrl($scope, $ionicModal, $ionicPopup, $state) {
         $scope.closeSignup();
 
         $ionicPopup.alert({
-            title: 'Error!',
-            template: 'Your email or password is empty!',
+            title: 'Congratulation!',
+            template: 'You have successfully registered the account.'
         });
     }
 

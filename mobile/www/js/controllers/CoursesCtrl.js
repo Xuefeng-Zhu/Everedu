@@ -1,5 +1,4 @@
-function CoursesCtrl($scope, $ionicModal) {
-
+function CoursesCtrl($scope, $ionicModal, $ionicPopup) {
     $scope.showDelete = false;
     $scope.courses = [{
         courseID: 'CS242',
@@ -34,6 +33,14 @@ function CoursesCtrl($scope, $ionicModal) {
     };
 
     $scope.searchCourse = function() {
+        // if ($scope.courseNumber == undefined || $scope.courseNumber == "") {
+        //     $ionicPopup.alert({
+        //         title: 'Error!',
+        //         template: 'Courese Number cannot be empty!',
+        //         okType: 'button-assertive'
+        //     });
+        //     return;
+        // }
         $scope.course = course;
     }
 
