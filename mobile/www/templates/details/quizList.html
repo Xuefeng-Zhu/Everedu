@@ -1,9 +1,9 @@
 <ion-view view-title="QuizList">
 	<ion-content>
 		<ul class="list">
-			<li class="item" ng-repeat="quiz in quizs">
+			<a class="item" ng-repeat="quiz in quizs" ui-sref="app.quizDetail({quizID: $index})">
 				{{$index+1}}. {{quiz.question}}
-			</li>
+			</a>
 		</ul>
 	</ion-content>
 </ion-view>

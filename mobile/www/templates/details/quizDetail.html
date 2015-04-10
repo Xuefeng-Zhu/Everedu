@@ -1,0 +1,26 @@
+<ion-view view-title="Quiz Question">
+	<ion-content>
+		<div class="list card">
+			<div class="item">
+				{{quiz.question}}
+			</div>
+			<div class="item item-body">
+				<ion-radio ng-repeat="choice in quiz.choices"
+					ng-value="choice"
+					ng-model="data.clientSide">
+					{{ choice }}
+				</ion-radio>
+			</div>
+			<div class="item tabs tabs-secondary tabs-icon-left">
+				<a class="tab-item">
+					<i class="icon ion-checkmark"></i>
+					Submit
+				</a>
+				<a class="tab-item">
+					<i class="icon ion-arrow-right-c"></i>
+					Next Question
+				</a>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

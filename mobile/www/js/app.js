@@ -68,6 +68,15 @@ angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl',
                 controller: 'QuizListCtrl'
             }
         }
+    })
+    .state('app.quizDetail', {
+        url: '/quizDetail/:quizID',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/details/quizDetail.html',
+                controller: 'QuizDetailCtrl'
+            }
+        }
     });
 
     // if none of the above states are matched, use this as the fallback
