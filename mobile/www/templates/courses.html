@@ -1,32 +1,27 @@
 <ion-view>
-    
-    <ion-header-bar class="bar-balanced">
-      <div class="buttons">
-        <button class="button button-icon icon ion-ios-minus-outline"
-          ng-click="showDelete = !showDelete;"></button>
-      </div>
-      <h1 class="title">Course List</h1>
-      <div class="buttons">
-        <button class="button icon-left ion-plus" ng-click="opensearchModal()">
-            Add Course
-        </button>
-      </div>
-    </ion-header-bar>
-
-    <ion-content>
-      <ion-list show-delete="showDelete">
-
-        <ion-item ng-repeat="course in courses" href="" class="item-remove-animate">
-          {{course.name}}
-          <span class="item-note">
-              {{course.time}} {{course.date}}
-          </span>
-          <ion-delete-button class="ion-minus-circled" 
-                             ng-click="onCourseDelete($index)">
-          </ion-delete-button>
-        </ion-item>
-
-      </ion-list>
-
-    </ion-content>
+  <ion-header-bar class="bar-balanced">
+    <div class="buttons">
+      <button class="button button-icon icon ion-ios-minus-outline"
+      ng-click="showDelete = !showDelete;"></button>
+    </div>
+    <h1 class="title">Course List</h1>
+    <div class="buttons">
+      <button class="button icon-left ion-plus" ng-click="opensearchModal()">
+      Add Course
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list show-delete="showDelete">
+      <ion-item ng-repeat="course in courses" href="" class="item-remove-animate">
+        {{course.name}}
+        <span class="item-note">
+          {{course.time}} {{course.date}}
+        </span>
+        <ion-delete-button class="ion-minus-circled"
+          ng-click="onCourseDelete($index)">
+        </ion-delete-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-view>

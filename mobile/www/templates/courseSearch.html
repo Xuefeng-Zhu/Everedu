@@ -1,20 +1,48 @@
 <ion-modal-view>
-<ion-header-bar class="bar-balanced">
-<h1 class="title">Course Search</h1>
-<div class="buttons">
-  <button class="button button-clear" ng-click="closesearchModal()">Close</button>
-</div>
-</ion-header-bar>
-<ion-content>
-<form ng-submit="searchCourse()">
-  <div class="item item-input-inset">
-    <label class="item-input-wrapper">
-      <input type="text" placeholder="Course Number">
-    </label>
-    <button class="button button-small">
-      Submit
-    </button>
-  </div>
-</form>
-</ion-content>
+  <ion-header-bar class="bar-balanced">
+    <h1 class="title">Course Search</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closesearchModal()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <!-- Course search form -->
+    <form ng-submit="searchCourse()">
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="Course Number">
+        </label>
+        <button class="button button-small">
+        Search
+        </button>
+      </div>
+    </form>
+    <!-- Show course detail -->
+    <div class="list card" ng-show="course">
+      <a class="item item-icon-left">
+        <i class="icon ion-pound"></i>
+        {{course.name}}
+      </a>
+      <a class="item item-icon-left">
+        <i class="icon ion-information"></i>
+        {{course.fullName}}
+      </a>
+      <a class="item item-icon-left">
+        <i class="icon ion-person"></i>
+        {{course.instructor}}
+      </a>
+      <a class="item item-icon-left">
+        <i class="icon ion-location"></i>
+        {{course.location}}
+      </a>
+      <a class="item item-icon-left">
+        <i class="icon ion-calendar"></i>
+        {{course.date}}
+      </a>
+      <a class="item item-icon-left">
+        <i class="icon ion-clock"></i>
+        {{course.time}}
+      </a>
+    </div>
+  </ion-content>
 </ion-modal-view>
