@@ -1,4 +1,5 @@
-angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl', 'everedu.AttendanceCtrl'])
+angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl', 
+    'everedu.AttendanceCtrl', 'everedu.QuizCtrl'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -54,7 +55,17 @@ angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl', '
         url: '/quiz',
         views: {
             'menuContent': {
-                templateUrl: 'templates/details/quiz.html'
+                templateUrl: 'templates/details/quiz.html',
+                controller: 'QuizCtrl'
+            }
+        }
+    })
+    .state('app.quizList', {
+        url: '/quizList/:status',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/details/quizList.html',
+                controller: 'QuizListCtrl'
             }
         }
     });

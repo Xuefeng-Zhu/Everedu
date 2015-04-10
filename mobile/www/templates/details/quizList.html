@@ -1,0 +1,9 @@
+<ion-view view-title="QuizList">
+	<ion-content>
+		<ul class="list">
+			<li class="item" ng-repeat="quiz in quizs">
+				{{$index+1}}. {{quiz.question}}
+			</li>
+		</ul>
+	</ion-content>
+</ion-view>

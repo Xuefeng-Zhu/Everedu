@@ -1,5 +1,17 @@
 <ion-view view-title="Quiz">
-  <ion-content>
-    <h1>Quiz</h1>
-  </ion-content>
+	<ion-content>
+		<div class="list">
+			<a class="item item-icon-left" ui-sref="app.quizList({status: 'current'})">
+				<i class="icon ion-edit"></i>
+				Current Quiz
+				<span class="badge badge-assertive">{{currentQuiz}}</span>
+			</a>
+
+			<a class="item item-icon-left" href="#">
+				<i class="icon ion-flag"></i>
+				Completed Quiz
+				<span class="badge badge-assertive">{{completedQuiz}}</span>
+			</a>
+		</div>
+	</ion-content>
 </ion-view>
