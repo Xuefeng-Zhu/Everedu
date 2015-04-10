@@ -6,9 +6,9 @@ function CoursesCtrl($scope, $ionicModal) {
         date: 'M',
         time: '4:00pm-5:00pm'
     }, {
-        name: 'CS423',
-        date: 'MWF',
-        time: '10:00am-10:50am'
+        name: 'CS425',
+        date: 'TR',
+        time: '9:30am-10:45am'
     }];
 
     var course = {
@@ -35,6 +35,11 @@ function CoursesCtrl($scope, $ionicModal) {
 
     $scope.searchCourse = function() {
         $scope.course = course;
+    }
+
+    $scope.joinCourse = function() {
+        $scope.courses.push($scope.course);
+        $scope.closesearchModal();
     }
 
     $scope.onCourseDelete = function(course) {

@@ -18,31 +18,36 @@
       </div>
     </form>
     <!-- Show course detail -->
-    <div class="list card" ng-show="course">
-      <a class="item item-icon-left">
-        <i class="icon ion-pound"></i>
-        {{course.name}}
-      </a>
-      <a class="item item-icon-left">
-        <i class="icon ion-information"></i>
-        {{course.fullName}}
-      </a>
-      <a class="item item-icon-left">
-        <i class="icon ion-person"></i>
-        {{course.instructor}}
-      </a>
-      <a class="item item-icon-left">
-        <i class="icon ion-location"></i>
-        {{course.location}}
-      </a>
-      <a class="item item-icon-left">
-        <i class="icon ion-calendar"></i>
-        {{course.date}}
-      </a>
-      <a class="item item-icon-left">
-        <i class="icon ion-clock"></i>
-        {{course.time}}
-      </a>
+    <div ng-show="course">
+      <div class="list card">
+        <a class="item item-icon-left">
+          <i class="icon ion-pound"></i>
+          {{course.name}}
+        </a>
+        <a class="item item-icon-left">
+          <i class="icon ion-information"></i>
+          {{course.fullName}}
+        </a>
+        <a class="item item-icon-left">
+          <i class="icon ion-person"></i>
+          {{course.instructor}}
+        </a>
+        <a class="item item-icon-left">
+          <i class="icon ion-location"></i>
+          {{course.location}}
+        </a>
+        <a class="item item-icon-left">
+          <i class="icon ion-calendar"></i>
+          {{course.date}}
+        </a>
+        <a class="item item-icon-left">
+          <i class="icon ion-clock"></i>
+          {{course.time}}
+        </a>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="joinCourse()">Join</button>
+      </div>
     </div>
   </ion-content>
 </ion-modal-view>
