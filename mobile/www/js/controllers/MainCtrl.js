@@ -1,4 +1,5 @@
-function LoginCtrl($scope, $ionicModal, $state) {
+function LoginCtrl($scope, $ionicModal, $ionicPopup, $state) {
+    $scope.account = {};
     $ionicModal.fromTemplateUrl('templates/signup.html', {
         scope: $scope
     }).then(function(modal) {
@@ -16,10 +17,33 @@ function LoginCtrl($scope, $ionicModal, $state) {
     };
 
     $scope.createAccount = function() {
-        $scope.closeSignup()
+        if ($scope.account.email == undefined || $scope.account.password == undefined ||
+            $scope.account.email == "" || $scope.account.password == "") {
+            $ionicPopup.alert({
+                title: 'Error!',
+                template: 'Your email or password is empty!',
+                okType: 'button-assertive'
+            });
+            return;
+        }
+        $scope.closeSignup();
+
+        $ionicPopup.alert({
+            title: 'Error!',
+            template: 'Your email or password is empty!',
+        });
     }
 
     $scope.login = function() {
+        if ($scope.account.email == undefined || $scope.account.password == undefined ||
+            $scope.account.email == "" || $scope.account.password == "") {
+            $ionicPopup.alert({
+                title: 'Error!',
+                template: 'Your email or password is empty!',
+                okType: 'button-assertive'
+            });
+            return;
+        }
         $state.go('courses');
     }
 }
