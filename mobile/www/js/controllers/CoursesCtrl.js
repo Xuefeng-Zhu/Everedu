@@ -2,17 +2,17 @@ function CoursesCtrl($scope, $ionicModal) {
 
     $scope.showDelete = false;
     $scope.courses = [{
-        name: 'CS242',
+        courseID: 'CS242',
         date: 'M',
         time: '4:00pm-5:00pm'
     }, {
-        name: 'CS425',
+        courseID: 'CS425',
         date: 'TR',
         time: '9:30am-10:45am'
     }];
 
     var course = {
-        name: 'CS423',
+        courseID: 'CS423',
         fullName: 'Operating Systems Design',
         instructor: 'Tarek Abdelzaher',
         location: '4126 Siebel Center',

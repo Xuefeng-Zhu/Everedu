@@ -28,7 +28,7 @@ angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl'])
       controller: 'CoursesCtrl'
     })
     .state('app', {
-        url: '/app',
+        url: '/app/:courseID',
         abstract: true,
         templateUrl: 'templates/menu.html',
         controller: 'AppCtrl'
