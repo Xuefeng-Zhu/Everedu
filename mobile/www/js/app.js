@@ -1,4 +1,4 @@
-angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl'])
+angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl', 'everedu.AttendanceCtrl'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -37,7 +37,16 @@ angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl'])
         url: '/attendance',
         views: {
             'menuContent': {
-                templateUrl: 'templates/attendance.html'
+                templateUrl: 'templates/details/attendance.html',
+                controller: 'AttendanceCtrl'
+            }
+        }
+    })
+    .state('app.quiz', {
+        url: '/quiz',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/details/quiz.html'
             }
         }
     });

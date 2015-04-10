@@ -16,7 +16,7 @@
       <ion-item ng-repeat="course in courses" ui-sref="app.attendance({courseID: course.courseID})" class="item-remove-animate">
         {{course.courseID}}
         <span class="item-note">
-          {{course.time}} {{course.date}}
+          {{course.time}} {{course.day}}
         </span>
         <ion-delete-button class="ion-minus-circled"
           ng-click="onCourseDelete($index)">

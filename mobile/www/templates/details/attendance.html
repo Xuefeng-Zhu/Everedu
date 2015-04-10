@@ -1,0 +1,30 @@
+<ion-view view-title="Attendance">
+	<ion-content>
+		<!-- Course search form -->
+		<form ng-submit="takeAttendance()">
+			<div class="item item-input-inset">
+				<label class="item-input-wrapper">
+					<input type="text" placeholder="Verify Code">
+				</label>
+				<button class="button button-small">
+				Submit
+				</button>
+			</div>
+		</form>
+		<div class="card">
+			<div class="item item-divider">
+				Record
+			</div>
+			<div class="item item-text-wrap">
+				<ion-list>
+					<ion-item ng-repeat="record in records" class="item-remove-animate">
+						{{record.date}}
+						<span class="item-note">
+							{{record.status}}
+						</span>
+					</ion-item>
+				</ion-list>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
