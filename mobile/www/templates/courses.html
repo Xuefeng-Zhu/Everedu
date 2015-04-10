@@ -13,11 +13,13 @@
   </ion-header-bar>
   <ion-content>
     <ion-list show-delete="showDelete">
-      <ion-item ng-repeat="course in courses" ui-sref="app.info({courseID: course.courseID})" class="item-remove-animate">
-        {{course.courseID}}
-        <span class="item-note">
-          {{course.time}} {{course.day}}
-        </span>
+      <ion-item ng-repeat="course in courses" class="item-remove-animate">
+        <div ui-sref="app.info({courseID: course.courseID})">
+          {{course.courseID}}
+          <span class="item-note">
+            {{course.time}} {{course.day}}
+          </span>
+        </div>
         <ion-delete-button class="ion-minus-circled"
           ng-click="onCourseDelete($index)">
         </ion-delete-button>
