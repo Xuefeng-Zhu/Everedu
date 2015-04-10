@@ -5,30 +5,43 @@ Everedu is a helpful education application. It tries to improve the lecture enga
 
 The main features of this application include
 
-+ Take lecture attedance
++ Take lecture attendance
 + A better platform letting students asking questions during lecture
 + Reply questions through webRTC
 + Pop quiz during the lecture to exam learning effectiveness
-+ Save quizs for future review
++ Save quizzes for future review
 + Collaboration on course note
 
 ## Development tools
 + Angularjs for front-end user interaction 
 + ionic for building cross platform mobile application
 + Firebase for backend system 
-+ Opotional Evernote API for data storage
++ Optional Evernote API for data storage
 
 
 ## Timeline
 + First Week
-	+ read document of libarary I am going to use
-	+ Implenment basic user interface
+	+ read document of library I am going to use
+	+ Implement basic user interface for mobile client
+		+ Implement the login interface
+		+ Implement the course list interface
+		+ Implement the course info interface 
+		+ Implement attendance interface
+		+ Implement quiz interface 
 + Second Week
-	+ Work on attendance feature
+	+ Implement basic user interface for web client
+		+ Implement the login interface
+		+ Implement the course list interface
+		+ Implement the course info interface 
+		+ Implement attendance interface
+		+ Implement quiz interface  
++ Third Week
+	+ Integrate Firebase into the both motile client and web client
+		+ Be able to login in using Firebase account system
+		+ Be able to store/fetch data using Firebase
+		+ Generate View based on real time data
++ Fourth Week
 	+ Work on asking question feature
 	+ Work on Reply questions through webRTC
-+ Third Week
-	+ Work on quiz feature
-	+ Work on save quiz to Evernote
-+ Fourth Week
 	+ Work on Collaboration on course note
+	+ Work on save quiz to Evernote
