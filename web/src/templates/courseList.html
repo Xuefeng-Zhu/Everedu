@@ -7,11 +7,77 @@
       </a>
     </li>
     <li class="sidebar-title"><span>Course List</span></li>
-    <li class="sidebar-list">
-      <a href="#">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
-    </li>
-    <li class="sidebar-list">
-      <a href="#/tables">Tables <span class="menu-icon fa fa-table"></span></a>
+    <li class="sidebar-list" ng-repeat="course in courses">
+      <a href="">{{course.courseID}}</a>
     </li>
   </ul>
+  <div class="sidebar-footer">
+    <div class="col-xs-12">
+      <a href="javascript:void(0)" ng-click="openCourseModal()">
+        Create New Course
+      </a>
+    </div>
+  </div>
 </div>
+
+
+<script type="text/ng-template" id="CourseModal.html">
+<div class="modal-header">
+  <h3 class="modal-title">Create New Course</h3>
+</div>
+<div class="modal-body">
+  <form class="form-signin form-horizontal">
+    <!-- Course ID Field -->
+    <div class="form-group">
+      <label for="courseID" class="col-sm-3 control-label">Course ID</label>
+      <div class="col-sm-9">
+        <input type="text" id="courseID" class="form-control" placeholder="Course ID" required autofocus ng-model="course.courseID">
+      </div>
+    </div>
+    <!-- Full Name Field -->
+    <div class="form-group">
+      <label for="fullName" class="col-sm-3 control-label">Full Name</label>
+      <div class="col-sm-9">
+        <input type="text" id="fullName" class="form-control" placeholder="Full Name" required ng-model="course.fullName">
+      </div>
+    </div>
+    <!-- Location Field -->
+    <div class="form-group">
+      <label for="location" class="col-sm-3 control-label">Location</label>
+      <div class="col-sm-9">
+        <input type="text" id="location" class="form-control" placeholder="Location" required ng-model="course.location">
+      </div>
+    </div>
+    <!-- Day Field -->
+    <div class="form-group">
+      <label for="day" class="col-sm-3 control-label">Day</label>
+      <div class="col-sm-9">
+        <div class="btn-group" id="day">
+          <label class="btn btn-primary" ng-model="schedule.day.M" btn-checkbox>M</label>
+          <label class="btn btn-primary" ng-model="schedule.day.T" btn-checkbox>T</label>
+          <label class="btn btn-primary" ng-model="schedule.day.W" btn-checkbox>W</label>
+          <label class="btn btn-primary" ng-model="schedule.day.R" btn-checkbox>R</label>
+          <label class="btn btn-primary" ng-model="schedule.day.F" btn-checkbox>F</label>
+        </div>
+      </div>
+    </div>
+    <!-- Time Field -->
+    <div class="form-group">
+      <label for="startTime" class="col-sm-3 control-label">Start Time</label>
+      <div class="col-sm-9">
+        <timepicker id="startTime" ng-model="schedule.startTime" hour-step="1" minute-step="15"></timepicker>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="endTime" class="col-sm-3 control-label">End Time</label>
+      <div class="col-sm-9">
+        <timepicker id="endTime" ng-model="schedule.endTime" hour-step="1" minute-step="15"></timepicker>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="create()">Create</button>
+  <button class="btn btn-warning" ng-click="$modalInstance.dismiss('cancel')">Cancel</button>
+</div>
+</script>

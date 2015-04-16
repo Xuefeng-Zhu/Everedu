@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies'])
+angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies', 
+	'everedu.MainCtrl', 'everedu.UserCtrl'])
     .config(['$stateProvider', '$urlRouterProvider',
         function($stateProvider, $urlRouterProvider) {
 
@@ -25,7 +26,8 @@ angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies'])
                     url: '/user',
                     views: {
                         'sidebar': {
-                            templateUrl: 'templates/courseList.html'
+                            templateUrl: 'templates/courseList.html',
+                            controller: 'UserCtrl'
                         }
                     }
                 })

@@ -33,14 +33,7 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup) {
     };
 
     $scope.searchCourse = function() {
-        // if ($scope.courseNumber == undefined || $scope.courseNumber == "") {
-        //     $ionicPopup.alert({
-        //         title: 'Error!',
-        //         template: 'Courese Number cannot be empty!',
-        //         okType: 'button-assertive'
-        //     });
-        //     return;
-        // }
+
         $scope.course = course;
     }
 
