@@ -40,5 +40,23 @@ angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies',
                         }
                     }
                 })
+                .state('dashboard.course', {
+                	abstract: true,
+                	url: '/course/:courseID',
+                	views: {
+                        'sidebar': {
+                            templateUrl: 'templates/courseMenu.html'
+                        }
+                    }
+                })
+                .state('dashboard.course.info', {
+                    url: '/info',
+                    views: {
+                        'content@dashboard': {
+                            templateUrl: 'templates/course/info.html',
+                            // controller: 'ProfileCtrl'
+                        }
+                    }
+                })
         }
     ]);;

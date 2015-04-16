@@ -1,0 +1,27 @@
+<div id="sidebar-wrapper">
+  <ul class="sidebar">
+    <li class="sidebar-main">
+      <a ng-click="toggleSidebar()" href="javascript:void(0)">
+        Dashboard
+        <span class="menu-icon glyphicon glyphicon-transfer"></span>
+      </a>
+    </li>
+    <li class="sidebar-title"><span>Course Menu</span></li>
+    <li class="sidebar-list">
+      <a ui-sref=".info">Info <span class="menu-icon fa fa-info"></span></a>
+    </li>
+    <li class="sidebar-list">
+      <a href="#">Attendance <span class="menu-icon fa fa-users"></span></a>
+    </li>
+    <li class="sidebar-list">
+      <a href="#">Quiz <span class="menu-icon fa fa-pencil"></span></a>
+    </li>
+  </ul>
+  <div class="sidebar-footer">
+    <div class="col-xs-12">
+      <a href="javascript:void(0)" ui-sref="dashboard.user.profile">
+        Back to Course List
+      </a>
+    </div>
+  </div>
+</div>
