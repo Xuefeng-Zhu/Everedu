@@ -61,8 +61,22 @@ angular.module('everedu.UserCtrl', [])
             }
         }
     ])
-    .controller('ProfileCtrl', ['$scope',
-        function($scope) {
+    .controller('ProfileCtrl', ['$scope', '$filter',
+        function($scope, $filter) {
+            $scope.editing = false;
+            $scope.user = {
+                name: 'Frank Zhu',
+                officeHour: 'Not Available'
+            }
 
+            $scope.edit = function() {
+                if ($scope.editing) {
+                    $scope.user.name = $scope.copy.name;
+                    $scope.user.officeHour = $filter('date')($scope.copy.startTime, 'h:mm a');
+                }
+
+                $scope.copy = angular.copy($scope.user);
+                $scope.editing = !$scope.editing;
+            }
         }
     ])

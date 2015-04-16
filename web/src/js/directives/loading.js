@@ -4,7 +4,7 @@
  */
 
 angular
-    .module('RDash')
+    .module('everedu')
     .directive('rdLoading', rdLoading);
 
 function rdLoading() {

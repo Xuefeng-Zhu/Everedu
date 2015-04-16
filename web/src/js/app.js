@@ -36,6 +36,7 @@ angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies',
                     views: {
                         'content@dashboard': {
                             templateUrl: 'templates/profile.html',
+                            controller: 'ProfileCtrl'
                         }
                     }
                 })

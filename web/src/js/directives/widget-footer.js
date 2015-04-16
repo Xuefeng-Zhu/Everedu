@@ -3,7 +3,7 @@
  */
 
 angular
-    .module('RDash')
+    .module('everedu')
     .directive('rdWidgetFooter', rdWidgetFooter);
 
 function rdWidgetFooter() {

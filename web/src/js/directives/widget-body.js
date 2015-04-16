@@ -3,7 +3,7 @@
  */
 
 angular
-    .module('RDash')
+    .module('everedu')
     .directive('rdWidgetBody', rdWidgetBody);
 
 function rdWidgetBody() {
