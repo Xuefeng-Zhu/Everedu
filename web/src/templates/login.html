@@ -54,7 +54,7 @@ border-top-right-radius: 0;
 	</div>
 </nav>
 <div class="container">
-	<form class="form-signin form-horizontal" ng-submit="login()">
+	<form class="form-signin form-horizontal">
 		<h2 class="form-signin-heading">EverEdu Instructor Login</h2>
 		<div class="form-group">
 			<label for="email" class="col-sm-2 control-label">Email</label>
@@ -69,9 +69,10 @@ border-top-right-radius: 0;
 			</div>
 		</div>
 		<div class="form-group">
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+			<button class="btn btn-lg btn-primary btn-block" ng-click="login()">Sign in</button>
 			<button class="btn btn-lg btn-success btn-block" ng-click="openSignup()">Sign up</button>
 		</div>
+
 	</form>
 </div>
 
@@ -97,6 +98,6 @@ border-top-right-radius: 0;
 </div>
 <div class="modal-footer">
 	<button class="btn btn-primary" ng-click="signup()">Create New Account</button>
-	<button class="btn btn-warning" ng-click="$modalInstance.dismiss('cancel')">Cancel</button>
+	<button class="btn" ng-click="$modalInstance.dismiss('cancel')">Cancel</button>
 </div>
 </script>

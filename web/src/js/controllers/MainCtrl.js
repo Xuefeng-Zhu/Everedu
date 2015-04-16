@@ -46,8 +46,8 @@ angular.module('everedu.MainCtrl', [])
         }
     ])
     // Controller for the whole dashboard
-    .controller('MainCtrl', ['$scope',
-        function($scope) {
+    .controller('MainCtrl', ['$scope', '$state',
+        function($scope, $state) {
         	$scope.fullSidebar = true;
 
         	/**
@@ -57,5 +57,9 @@ angular.module('everedu.MainCtrl', [])
             $scope.toggleSidebar = function() {
                 $scope.fullSidebar = !$scope.fullSidebar;
             };
+
+            $scope.logout = function() {
+                $state.go('login');
+            }
         }
     ])
