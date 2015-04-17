@@ -1,9 +1,11 @@
 /**
- *  Module
+ *  everedu.UserCtrl Module
  *
  * Description
+ * define controllers used to manage course list, and user profile
  */
 angular.module('everedu.UserCtrl', [])
+    // controller used to store course list info
     .controller('UserCtrl', ['$scope', '$modal',
         function($scope, $modal) {
             $scope.courses = [{
@@ -16,6 +18,11 @@ angular.module('everedu.UserCtrl', [])
                 time: '9:30am-10:45am'
             }];
 
+             /**
+             * @name openCourseModal
+             * @desc Open the modal used to create course, and push
+             * the new course to the course list
+             */
             $scope.openCourseModal = function() {
                 var modal = $modal.open({
                     templateUrl: 'CourseModal.html',
@@ -28,6 +35,7 @@ angular.module('everedu.UserCtrl', [])
             }
         }
     ])
+    // controller used to create course
     .controller('CreateCourseCtrl', ['$scope', '$modalInstance', '$filter',
         function($scope, $modalInstance, $filter) {
             $scope.$modalInstance = $modalInstance;
@@ -43,6 +51,11 @@ angular.module('everedu.UserCtrl', [])
             	}
             };
 
+             /**
+             * @name create
+             * @desc Format new course data, and pass the data back
+             * to parent controller
+             */
             $scope.create = function() {
             	var day = "";
                 angular.forEach($scope.schedule.day, function(value, key){
@@ -62,6 +75,7 @@ angular.module('everedu.UserCtrl', [])
             }
         }
     ])
+    // controller used to manage user profile
     .controller('ProfileCtrl', ['$scope', '$filter',
         function($scope, $filter) {
             $scope.editing = false;
@@ -70,6 +84,10 @@ angular.module('everedu.UserCtrl', [])
                 officeHour: 'Not Available'
             }
 
+             /**
+             * @name edit
+             * @desc Edit the user profile
+             */
             $scope.edit = function() {
                 if ($scope.editing) {
                     $scope.user.name = $scope.copy.name;

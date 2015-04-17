@@ -2,8 +2,10 @@
  * everedu.CourseCtrl Module
  *
  * Description
+ * Define InfoCtrl
  */
-angular.module('everedu.CourseCtrl', ['everedu.AttendaceCtrl', 'everedu.QuizCtrl'])
+angular.module('everedu.CourseCtrl', ['everedu.AttendanceCtrl', 'everedu.QuizCtrl'])
+    // controller used to manage course informaton page
     .controller('InfoCtrl', ['$scope', '$filter',
         function($scope, $filter) {
             $scope.editing = {
@@ -32,6 +34,10 @@ angular.module('everedu.CourseCtrl', ['everedu.AttendaceCtrl', 'everedu.QuizCtrl
                 endTime: '10:50 AM'
             }
 
+             /**
+             * @name editAnnouncement
+             * @desc Edit the course announcement
+             */
             $scope.editAnnouncement = function() {
                 if ($scope.editing.announcement) {
                     $scope.course.announcement = $scope.copy.announcement;
@@ -42,6 +48,11 @@ angular.module('everedu.CourseCtrl', ['everedu.AttendaceCtrl', 'everedu.QuizCtrl
                 $scope.editing.announcement = !$scope.editing.announcement;
             }
 
+             /**
+             * @name editDescription
+             * @desc Edit the course description, and make sure 
+             * the data is properlly formatted
+             */
             $scope.editDescription = function() {
                 if ($scope.editing.description) {
                     var day = "";

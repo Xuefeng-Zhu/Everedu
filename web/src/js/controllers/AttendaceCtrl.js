@@ -1,10 +1,12 @@
 /**
- * everedu.AttendaceCtrl Module
+ * everedu.AttendanceCtrl Module
  *
  * Description
+ * define AttendanceCtrl  
  */
-angular.module('everedu.AttendaceCtrl', [])
-    .controller('AttendaceCtrl', ['$scope',
+angular.module('everedu.AttendanceCtrl', [])
+    // controller used to manage addentance page
+    .controller('AttendanceCtrl', ['$scope',
         function($scope) {
             $scope.active = false;
 
@@ -45,10 +47,18 @@ angular.module('everedu.AttendaceCtrl', [])
             	})
             }
 
+             /**
+             * @name generateCode
+             * @desc Generate validate code used for attendance
+             */
             $scope.generateCode = function() {
                 $scope.validateCode = parseInt(Math.random() * 100000);
             }
 
+             /**
+             * @name toggleState
+             * @desc toggle the option if accepting attendance record
+             */
             $scope.toggleState = function() {
                 $scope.active = !$scope.active;
             }

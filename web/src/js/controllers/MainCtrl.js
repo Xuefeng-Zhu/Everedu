@@ -1,6 +1,7 @@
 /**
  * everedu.MainCtrl module 
  * 
+ * Description
  * Define LoginCtrl, SignupCtrl, MainCtrl
  */
 
@@ -58,6 +59,10 @@ angular.module('everedu.MainCtrl', [])
                 $scope.fullSidebar = !$scope.fullSidebar;
             };
 
+            /**
+             * @name logout
+             * @desc Log the user out, and go to the login page
+             */
             $scope.logout = function() {
                 $state.go('login');
             }

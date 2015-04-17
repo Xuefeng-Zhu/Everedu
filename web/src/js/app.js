@@ -64,7 +64,7 @@ angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies', 'googlechar
                     views: {
                         'content@dashboard': {
                             templateUrl: 'templates/course/attendance.html',
-                            controller: 'AttendaceCtrl'
+                            controller: 'AttendanceCtrl'
                         }
                     }
                 })

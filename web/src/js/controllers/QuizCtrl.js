@@ -2,8 +2,10 @@
  * everedu.QuizCtrl Module
  *
  * Description
+ * The controllers used to manage quiz state interface
  */
 angular.module('everedu.QuizCtrl', [])
+	// controller used to control the most part of quiz page
     .controller('QuizCtrl', ['$scope', '$modal',
         function($scope, $modal) {
             $scope.search = {};
@@ -47,6 +49,11 @@ angular.module('everedu.QuizCtrl', [])
 
             $scope.columnChart.type = 'ColumnChart';
 
+        	 /**
+			 * @name openQuizModal
+			 * @desc Open the modal used to create quiz, and push
+			 * the new quiz question to the current quiz list
+          	 */
             $scope.openQuizModal = function() {
                 var modal = $modal.open({
                     templateUrl: 'QuizModal.html',
@@ -59,10 +66,19 @@ angular.module('everedu.QuizCtrl', [])
                 });
             }
 
+        	 /**
+			 * @name selectQuiz
+			 * @desc Select specific quiz question
+          	 */
             $scope.selectQuiz = function(quiz) {
                 $scope.selectedQuiz = quiz;
             }
 
+        	 /**
+			 * @name toggleComplete
+			 * @desc Mark the quiz completed or uncomplted, and 
+			 * put the quiz into matching quiz list
+          	 */
             $scope.toggleComplete = function() {
             	if ($scope.selectedQuiz.completed) {
             		var index = $scope.completedQuiz.indexOf($scope.selectedQuiz);
@@ -75,11 +91,11 @@ angular.module('everedu.QuizCtrl', [])
 
             	}
             	$scope.selectedQuiz.completed = !$scope.selectedQuiz.completed;
-            	console.log($scope.currentQuiz);
             }
 
         }
     ])
+	// Controller used to create new quiz question
     .controller('CreateQuizCtrl', ['$scope', '$modalInstance',
         function($scope, $modalInstance) {
             $scope.$modalInstance = $modalInstance;
@@ -89,6 +105,10 @@ angular.module('everedu.QuizCtrl', [])
                 completed: false
             };
 
+        	 /**
+			 * @name addChoice
+			 * @desc Add more choice into the quiz question
+          	 */
             $scope.addChoice = function() {
                 $scope.quiz.choices.push({
                     content: ""
@@ -96,6 +116,11 @@ angular.module('everedu.QuizCtrl', [])
                 console.log($scope.quiz);
             }
 
+        	 /**
+			 * @name create
+			 * @desc Close the quiz modal and pass quiz object back to 
+			 * parent
+          	 */
             $scope.create = function() {
                 $modalInstance.close($scope.quiz);
             }
