@@ -1,6 +1,7 @@
 /**
  * Loading Directive
  * @see http://tobiasahlin.com/spinkit/
+ * code from https://github.com/rdash/rdash-angular
  */
 
 angular

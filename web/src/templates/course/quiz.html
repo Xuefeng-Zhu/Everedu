@@ -1,5 +1,6 @@
 <div class="row">
 	<div class="col-lg-6">
+		<!-- Current Quiz Panel -->
 		<rd-widget>
 		<rd-widget-header icon="fa-spinner" title="Current Quiz">
 		<button class="btn btn-sm btn-info" ng-click="openQuizModal()">Create Quiz</button>
@@ -19,6 +20,7 @@
 		</rd-widget>
 		<br>
 		
+		<!-- Completed Quiz Panel -->
 		<rd-widget>
 		<rd-widget-header icon="fa-flag" title="Completed List">
 		<input type="text" placeholder="Search" class="form-control input-sm" ng-model="search.quiz"/>
@@ -38,6 +40,7 @@
 		</rd-widget>
 	</div>
 	<div class="col-lg-6">
+		<!-- Quiz Detail Panel -->
 		<rd-widget ng-show="selectedQuiz">
 		<rd-widget-header icon="fa-eye" title="Quiz Detail">
 		<button class="btn btn-sm" ng-class="{'btn-success': !selectedQuiz.completed, 'btn-warning': selectedQuiz.completed}" ng-click="toggleComplete()">

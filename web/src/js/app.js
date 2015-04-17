@@ -1,3 +1,7 @@
+/**
+ * The bootstrap script used to config the whole application
+ */
+
 'use strict';
 
 angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies', 'googlechart',

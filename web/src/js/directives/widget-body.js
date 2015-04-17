@@ -1,5 +1,6 @@
 /**
  * Widget Body Directive
+ * code from https://github.com/rdash/rdash-angular
  */
 
 angular
