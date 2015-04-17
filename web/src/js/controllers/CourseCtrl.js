@@ -2,7 +2,7 @@
  * everedu.CourseCtrl Module
  *
  * Description
- * Define InfoCtrl
+ * Define InfoCtrl, and inject other course related controller
  */
 angular.module('everedu.CourseCtrl', ['everedu.AttendanceCtrl', 'everedu.QuizCtrl'])
     // controller used to manage course informaton page
