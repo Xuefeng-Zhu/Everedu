@@ -46,10 +46,10 @@ angular.module('everedu.MainCtrl', [])
         }
     ])
     // Controller for the whole dashboard
-    .controller('MainCtrl', ['$scope', '$state',
-        function($scope, $state) {
+    .controller('MainCtrl', ['$scope', '$rootScope', '$state',
+        function($scope, $rootScope, $state) {
+            $rootScope.$state = $state;
         	$scope.fullSidebar = true;
-
         	/**
 			 * @name toggleSidebar
 			 * @desc Toggle the side bar between full size or small size

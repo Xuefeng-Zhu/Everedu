@@ -1,1 +1,91 @@
-bla bla
+<div class="row">
+	<div class="col-lg-12">
+		<rd-widget>
+		<rd-widget-header icon="fa-bullhorn" title="Announcement">
+		<button class="btn btn-sm btn-info" ng-click="editAnnouncement()">
+		{{editing.announcement? "Save" : "Edit"}}
+		</button>
+		</rd-widget-header>
+		<rd-widget-body>
+		<form class="form-signin form-horizontal">
+			<!-- Name Field -->
+			<div class="form-group">
+				<div class="col-sm-12">
+					<h5 ng-hide="editing.announcement">{{course.announcement}}</h5>
+					<textarea class="form-control" rows="3" ng-model="copy.announcement" ng-show="editing.announcement">
+					</textarea>
+				</div>
+			</div>
+		</form>
+		</rd-widget-body>
+		</rd-widget>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<rd-widget>
+		<rd-widget-header icon="fa-pencil-square-o" title="Course Description">
+		<button class="btn btn-sm btn-info" ng-click="editDescription()">
+		{{editing.description? "Save" : "Edit"}}
+		</button>
+		</rd-widget-header>
+		<rd-widget-body>
+		<form class="form-signin form-horizontal">
+			<!-- Course ID Field -->
+			<div class="form-group">
+				<label for="courseID" class="col-sm-2 control-label">Course ID</label>
+				<div class="col-sm-9">
+					<h5 ng-hide="editing.description">{{course.courseID}}</h5>
+					<input type="text" id="courseID" class="form-control" placeholder="Course ID" required autofocus ng-model="copy.courseID" ng-show="editing.description">
+				</div>
+			</div>
+			<!-- Full Name Field -->
+			<div class="form-group">
+				<label for="fullName" class="col-sm-2 control-label">Full Name</label>
+				<div class="col-sm-9">
+					<h5 ng-hide="editing.description">{{course.fullName}}</h5>
+					<input type="text" id="fullName" class="form-control" placeholder="Full Name" required ng-model="copy.fullName" ng-show="editing.description">
+				</div>
+			</div>
+			<!-- Location Field -->
+			<div class="form-group">
+				<label for="location" class="col-sm-2 control-label">Location</label>
+				<div class="col-sm-9">
+					<h5 ng-hide="editing.description">{{course.location}}</h5>
+					<input type="text" id="location" class="form-control" placeholder="Location" required ng-model="copy.location" ng-show="editing.description">
+				</div>
+			</div>
+			<!-- Day Field -->
+			<div class="form-group">
+				<label for="day" class="col-sm-2 control-label">Day</label>
+				<div class="col-sm-9">
+					<h5 ng-hide="editing.description">{{course.day}}</h5>
+					<div class="btn-group" id="day" ng-show="editing.description">
+						<label class="btn btn-primary" ng-model="schedule.day.M" btn-checkbox>M</label>
+						<label class="btn btn-primary" ng-model="schedule.day.T" btn-checkbox>T</label>
+						<label class="btn btn-primary" ng-model="schedule.day.W" btn-checkbox>W</label>
+						<label class="btn btn-primary" ng-model="schedule.day.R" btn-checkbox>R</label>
+						<label class="btn btn-primary" ng-model="schedule.day.F" btn-checkbox>F</label>
+					</div>
+				</div>
+			</div>
+			<!-- Time Field -->
+			<div class="form-group">
+				<label for="startTime" class="col-sm-2 control-label">Start Time</label>
+				<div class="col-sm-9">
+					<h5 ng-hide="editing.description">{{course.startTime}}</h5>
+					<timepicker id="startTime" ng-model="schedule.startTime" hour-step="1" minute-step="15" ng-show="editing.description"></timepicker>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="endTime" class="col-sm-2 control-label">End Time</label>
+				<div class="col-sm-9">
+					<h5 ng-hide="editing.description">{{course.endTime}}</h5>
+					<timepicker id="endTime" ng-model="schedule.endTime" hour-step="1" minute-step="15" ng-show="editing.description"></timepicker>
+				</div>
+			</div>
+		</form>
+		</rd-widget-body>
+		</rd-widget>
+	</div>
+</div>

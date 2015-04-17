@@ -45,11 +45,12 @@ angular.module('everedu.UserCtrl', [])
 
             $scope.create = function() {
             	var day = "";
-            	for (var d in $scope.schedule.day){
-            		if ($scope.schedule.day[d]){
-            			day += d;
-            		}
-            	}
+                angular.forEach($scope.schedule.day, function(value, key){
+                    if (value){
+                        day += key;
+                    }
+                })
+
             	$scope.course.day = day;
 
                 $scope.course.startTime = 
