@@ -3,7 +3,7 @@
  *
  * Description
  */
-angular.module('everedu.CourseCtrl', ['everedu.AttendaceCtrl'])
+angular.module('everedu.CourseCtrl', ['everedu.AttendaceCtrl', 'everedu.QuizCtrl'])
     .controller('InfoCtrl', ['$scope', '$filter',
         function($scope, $filter) {
             $scope.editing = {

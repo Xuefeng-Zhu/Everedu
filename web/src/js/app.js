@@ -73,7 +73,7 @@ angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies', 'googlechar
                     views: {
                         'content@dashboard': {
                             templateUrl: 'templates/course/quiz.html',
-                            // controller: 'QuizCtrl'
+                            controller: 'QuizCtrl'
                         }
                     }
                 })

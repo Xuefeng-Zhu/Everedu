@@ -1,0 +1,48 @@
+<div class="row">
+	<div class="col-lg-6">
+		<rd-widget>
+		<rd-widget-header icon="fa-spinner" title="Current Quiz">
+		<button class="btn btn-sm btn-info">Create Quiz</button>
+		</rd-widget-header>
+		<rd-widget-body classes="medium no-padding">
+		<div class="table-responsive">
+			<table class="table">
+				<tbody>
+					<tr ng-repeat="quiz in currentQuiz">
+						<td class="col-sm-1">{{$index+1}}</td>
+						<td>{{quiz.question}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</rd-widget-body>
+		</rd-widget>
+		<br>
+		
+		<rd-widget>
+		<rd-widget-header icon="fa-flag" title="Completed List">
+		<input type="text" placeholder="Search" class="form-control input-sm" ng-model="search.quiz"/>
+		</rd-widget-header>
+		<rd-widget-body classes="medium no-padding">
+		<div class="table-responsive">
+			<table class="table">
+				<tbody>
+					<tr ng-repeat="quiz in completedQuiz | filter: search.quiz">
+						<td class="col-sm-1">{{$index+1}}</td>
+						<td>{{quiz.question}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-6">
+		<rd-widget>
+		<rd-widget-header icon="fa-eye" title="Quiz Detail">
+		</rd-widget-header>
+		<rd-widget-body>
+		</rd-widget-body>
+		</rd-widget>
+	</div>
+</div>
