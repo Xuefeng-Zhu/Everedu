@@ -2,7 +2,7 @@
 	<div class="col-lg-6">
 		<rd-widget>
 		<rd-widget-header icon="fa-spinner" title="Current Quiz">
-		<button class="btn btn-sm btn-info">Create Quiz</button>
+		<button class="btn btn-sm btn-info" ng-click="openQuizModal()">Create Quiz</button>
 		</rd-widget-header>
 		<rd-widget-body classes="medium no-padding">
 		<div class="table-responsive">
@@ -46,3 +46,35 @@
 		</rd-widget>
 	</div>
 </div>
+
+
+<script type="text/ng-template" id="QuizModal.html">
+<div class="modal-header">
+	<h3 class="modal-title">Create New Course</h3>
+</div>
+<div class="modal-body">
+	<form>
+		<!-- Question Field -->
+		<div class="form-group">
+			<label for="question" class="control-label">Question</label>
+			<input type="text" id="question" class="form-control" placeholder="Question"  autofocus ng-model="quiz.question">
+		</div>
+		<!-- New Choice Field -->
+		<div class="input-group" ng-repeat="choice in quiz.choices">
+			<span class="input-group-addon">
+				<input type="radio" ng-model="quiz.answer" ng-value="choice.content">
+			</span>
+			<input type="text" class="form-control" ng-model="choice.content">
+		</div>
+		<br>
+		<button class="btn btn-block btn-default" ng-click="addChoice()">
+		<i class="fa fa-plus"></i>
+		Add Choice
+		</button>
+	</form>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="create()">Create</button>
+	<button class="btn btn-warning" ng-click="$modalInstance.dismiss('cancel')">Cancel</button>
+</div>
+</script>
