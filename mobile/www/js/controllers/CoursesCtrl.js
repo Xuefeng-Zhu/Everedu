@@ -1,3 +1,10 @@
+/**
+ * everedu.CourseCtrl Module
+ *
+ * Description
+ * Define CourseCtrl
+ */
+
 function CoursesCtrl($scope, $ionicModal, $ionicPopup) {
     $scope.showDelete = false;
     $scope.courses = [{
@@ -25,23 +32,37 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup) {
         $scope.searchModal = modal;
     });
 
+    // show the search modal
     $scope.opensearchModal = function() {
         $scope.searchModal.show();
     };
+    // hide the search modal
     $scope.closesearchModal = function() {
         $scope.searchModal.hide();
     };
 
+    /**
+    * @name search Course
+    * @desc Search for specific course 
+    */
     $scope.searchCourse = function() {
 
         $scope.course = course;
     }
 
+    /**
+    * @name joinCourse
+    * @desc Add the course into course list
+    */
     $scope.joinCourse = function() {
         $scope.courses.push($scope.course);
         $scope.closesearchModal();
     }
 
+    /**
+    * @name onCourseDelete
+    * @desc Delete the course from course list
+    */
     $scope.onCourseDelete = function(course) {
         $scope.courses.splice(course, 1);
     }

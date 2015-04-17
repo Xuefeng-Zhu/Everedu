@@ -1,3 +1,6 @@
+/**
+ * The bootstrap script used to config the whole application
+ */
 angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl', 
     'everedu.AttendanceCtrl', 'everedu.QuizCtrl'])
 

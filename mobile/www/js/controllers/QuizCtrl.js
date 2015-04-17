@@ -1,3 +1,10 @@
+/**
+ * everedu.QuizCtrl Module
+ *
+ * Description
+ * The controllers used to manage quiz state interface
+ */
+
 function QuizCtrl($scope) {
     $scope.currentQuiz = 5;
     $scope.completedQuiz = 10;

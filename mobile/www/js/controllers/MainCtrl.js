@@ -1,3 +1,10 @@
+/**
+ * everedu.MainCtrl module
+ *
+ * Description
+ * Define LoginCtrl, AppCtrl
+ */
+
 function LoginCtrl($scope, $ionicModal, $ionicPopup, $state) {
     $scope.account = {};
     $ionicModal.fromTemplateUrl('templates/signup.html', {
@@ -16,6 +23,10 @@ function LoginCtrl($scope, $ionicModal, $ionicPopup, $state) {
         $scope.signupModal.show();
     };
 
+    /**
+    * @name createAccount
+    * @desc Create a new user account
+    */
     $scope.createAccount = function() {
         if ($scope.account.email == undefined || $scope.account.password == undefined ||
             $scope.account.email == "" || $scope.account.password == "") {
@@ -34,6 +45,10 @@ function LoginCtrl($scope, $ionicModal, $ionicPopup, $state) {
         });
     }
 
+    /**
+    * @name login
+    * @desc Login the user into the application, and go to courese page
+    */
     $scope.login = function() {
         if ($scope.account.email == undefined || $scope.account.password == undefined ||
             $scope.account.email == "" || $scope.account.password == "") {

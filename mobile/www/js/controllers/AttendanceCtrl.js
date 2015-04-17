@@ -1,3 +1,10 @@
+/**
+ * everedu.AttendanceCtrl Module
+ *
+ * Description
+ * define AttendanceCtrl  
+ */
+
 function AttendanceCtrl($scope) {
     $scope.records = [{
         date: 'Thu Apr 09 2015',
@@ -7,6 +14,10 @@ function AttendanceCtrl($scope) {
         status: 'attend'
     }];
 
+    /**
+    * @name takeAttendance
+    * @desc put the attendance record into server
+    */
     $scope.takeAttendance = function(){
         var record = {
             status: 'attend'
