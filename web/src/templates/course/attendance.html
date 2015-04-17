@@ -1,0 +1,70 @@
+<div class="row">
+	<div class="col-lg-6">
+		<rd-widget>
+		<rd-widget-header icon="fa-gears" title="Control">
+		</rd-widget-header>
+		<rd-widget-body>
+		<form>
+			<div class="form-group">
+				<label for="code" class="control-label">Validate Code</label>
+				<div class="">
+					<input type="text" id="code" class="form-control" placeholder="Validate Code" autofocus ng-model="validateCode">
+				</div>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-sm btn-primary" ng-click="generateCode()">
+				<i class="fa fa-random"></i>
+				Generate Code</button>
+				<button class="btn btn-sm pull-right" ng-class="{'btn-warning': active, 'btn-success': !active}" ng-click="toggleState()">
+				<i class="fa" ng-class="{'fa-toggle-on': active, 'fa-toggle-off': !active}"></i>
+				Turn {{active? "off" : "on"}}</button>
+			</div>
+		</form>
+		</rd-widget-body>
+		</rd-widget>
+		<br>
+		<rd-widget>
+		<rd-widget-header icon="fa-pie-chart" title="Attendance Statistics">
+		</rd-widget-header>
+		<rd-widget-body>
+		<div google-chart chart="pieChart" style="{{pieChart.cssStyle}}"></div>
+		</rd-widget-body>
+		</rd-widget>
+	</div>
+	<div class="col-lg-6">
+		<rd-widget>
+		<rd-widget-header icon="fa-thumbs-up" title="Attendant List">
+		<span>40</span>
+		</rd-widget-header>
+		<rd-widget-body classes="medium no-padding">
+		<div class="table-responsive">
+			<table class="table">
+				<tbody>
+					<tr ng-repeat="student in absentee">
+					<td>{{student.name}}</td>
+					<td>{{student.date}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</rd-widget-body>
+		</rd-widget>
+		<br>
+		<rd-widget>
+		<rd-widget-header icon="fa-thumbs-down" title="Absentee List">
+		<span>5</span>
+		</rd-widget-header>
+		<rd-widget-body classes="medium no-padding">
+		<div class="table-responsive">
+			<table class="table">
+				<tbody>
+					<tr ng-repeat="student in attendant">
+					<td>{{student.name}}</td>
+					<td>{{student.date}}</td>
+					</tr>				</tbody>
+			</table>
+		</div>
+		</rd-widget-body>
+		</rd-widget>
+	</div>
+</div>

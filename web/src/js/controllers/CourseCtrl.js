@@ -1,9 +1,9 @@
 /**
- *  Module
+ * everedu.CourseCtrl Module
  *
  * Description
  */
-angular.module('everedu.CourseCtrl', [])
+angular.module('everedu.CourseCtrl', ['everedu.AttendaceCtrl'])
     .controller('InfoCtrl', ['$scope', '$filter',
         function($scope, $filter) {
             $scope.editing = {

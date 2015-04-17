@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies', 
-	'everedu.MainCtrl', 'everedu.UserCtrl', 'everedu.CourseCtrl'])
+angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies', 'googlechart',
+    'everedu.MainCtrl', 'everedu.UserCtrl', 'everedu.CourseCtrl'
+])
     .config(['$stateProvider', '$urlRouterProvider',
         function($stateProvider, $urlRouterProvider) {
 
@@ -41,9 +42,9 @@ angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies',
                     }
                 })
                 .state('dashboard.course', {
-                	abstract: true,
-                	url: '/course/:courseID',
-                	views: {
+                    abstract: true,
+                    url: '/course/:courseID',
+                    views: {
                         'sidebar': {
                             templateUrl: 'templates/courseMenu.html'
                         }
@@ -55,6 +56,24 @@ angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies',
                         'content@dashboard': {
                             templateUrl: 'templates/course/info.html',
                             controller: 'InfoCtrl'
+                        }
+                    }
+                })
+                .state('dashboard.course.attendance', {
+                    url: '/attendance',
+                    views: {
+                        'content@dashboard': {
+                            templateUrl: 'templates/course/attendance.html',
+                            controller: 'AttendaceCtrl'
+                        }
+                    }
+                })
+                .state('dashboard.course.quiz', {
+                    url: '/quiz',
+                    views: {
+                        'content@dashboard': {
+                            templateUrl: 'templates/course/quiz.html',
+                            // controller: 'QuizCtrl'
                         }
                     }
                 })
