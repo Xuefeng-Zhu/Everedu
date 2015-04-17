@@ -23,7 +23,7 @@ angular.module('everedu.UserCtrl', [])
                 });
 
                 modal.result.then(function(course) {
-                	console.log(course);
+                	$scope.courses.push(course);
                 })
             }
         }
