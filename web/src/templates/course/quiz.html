@@ -8,7 +8,7 @@
 		<div class="table-responsive">
 			<table class="table">
 				<tbody>
-					<tr ng-repeat="quiz in currentQuiz">
+					<tr ng-repeat="quiz in currentQuiz" ng-click="selectQuiz(quiz)">
 						<td class="col-sm-1">{{$index+1}}</td>
 						<td>{{quiz.question}}</td>
 					</tr>
@@ -38,22 +38,33 @@
 		</rd-widget>
 	</div>
 	<div class="col-lg-6">
-		<rd-widget>
+		<rd-widget ng-show="selectedQuiz">
 		<rd-widget-header icon="fa-eye" title="Quiz Detail">
+		<button class="btn btn-sm" ng-class="{'btn-success': !selectedQuiz.completed, 'btn-warning': selectedQuiz.completed}" ng-click="toggleComplete()">
+		<i class="fa" ng-class="{'fa-check-square-o': !selectedQuiz.completed, 'fa-square-o': selectedQuiz.completed}"></i>
+		Mark {{selectedQuiz.completed? "Uncomplete" : "Complete"}}</button>
 		</rd-widget-header>
 		<rd-widget-body>
+		<h4>{{selectedQuiz.question}}</h4>
+		<div class="input-group" ng-repeat="choice in selectedQuiz.choices">
+			<span class="input-group-addon">
+				<input type="radio" ng-model="selectedQuiz.answer" ng-value="choice.content" disabled="false">
+			</span>
+			<input type="text" class="form-control" ng-model="choice.content" disabled="true">
+		</div>
+
+		<div google-chart chart="columnChart"></div>
+
 		</rd-widget-body>
 		</rd-widget>
 	</div>
 </div>
-
-
 <script type="text/ng-template" id="QuizModal.html">
 <div class="modal-header">
-	<h3 class="modal-title">Create New Course</h3>
+		<h3 class="modal-title">Create New Course</h3>
 </div>
 <div class="modal-body">
-	<form>
+		<form>
 		<!-- Question Field -->
 		<div class="form-group">
 			<label for="question" class="control-label">Question</label>

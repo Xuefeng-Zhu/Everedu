@@ -7,7 +7,8 @@ angular.module('everedu.QuizCtrl', [])
     .controller('QuizCtrl', ['$scope', '$modal',
         function($scope, $modal) {
             $scope.search = {};
-            $scope.currentQuiz = $scope.completedQuiz = [{
+            $scope.completedQuiz = [];
+            $scope.currentQuiz = [{
                 question: "What is 1+1?",
                 choices: [{
                     content: "2"
@@ -19,7 +20,7 @@ angular.module('everedu.QuizCtrl', [])
                     content: "5"
                 }],
                 answer: 2,
-                completed: false
+                completed: false,
             }, {
                 question: "Do you know the result of 2+1?",
                 choices: [{
@@ -35,6 +36,17 @@ angular.module('everedu.QuizCtrl', [])
                 completed: false
             }];
 
+            $scope.columnChart = {};
+            $scope.columnChart.data = [
+                ['Choice', 'Count'],
+                ['A', 50],
+                ['B', 20],
+                ['C', 5],
+                ['D', 10]
+            ];;
+
+            $scope.columnChart.type = 'ColumnChart';
+
             $scope.openQuizModal = function() {
                 var modal = $modal.open({
                     templateUrl: 'QuizModal.html',
@@ -47,6 +59,25 @@ angular.module('everedu.QuizCtrl', [])
                 });
             }
 
+            $scope.selectQuiz = function(quiz) {
+                $scope.selectedQuiz = quiz;
+            }
+
+            $scope.toggleComplete = function() {
+            	if ($scope.selectedQuiz.completed) {
+            		var index = $scope.completedQuiz.indexOf($scope.selectedQuiz);
+            		$scope.completedQuiz.splice(index, 1);
+            		$scope.currentQuiz.push($scope.selectedQuiz);
+            	} else {
+            		var index = $scope.currentQuiz.indexOf($scope.selectedQuiz);
+            		$scope.currentQuiz.splice(index, 1);
+            		$scope.completedQuiz.push($scope.selectedQuiz);
+
+            	}
+            	$scope.selectedQuiz.completed = !$scope.selectedQuiz.completed;
+            	console.log($scope.currentQuiz);
+            }
+
         }
     ])
     .controller('CreateQuizCtrl', ['$scope', '$modalInstance',
@@ -54,11 +85,14 @@ angular.module('everedu.QuizCtrl', [])
             $scope.$modalInstance = $modalInstance;
 
             $scope.quiz = {
-                choices: []
+                choices: [],
+                completed: false
             };
 
             $scope.addChoice = function() {
-                $scope.quiz.choices.push({content: ""});
+                $scope.quiz.choices.push({
+                    content: ""
+                });
                 console.log($scope.quiz);
             }
 
