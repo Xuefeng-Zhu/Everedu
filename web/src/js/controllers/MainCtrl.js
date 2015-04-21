@@ -5,7 +5,7 @@
  * Define LoginCtrl, SignupCtrl, MainCtrl
  */
 
-angular.module('everedu.MainCtrl', ['firebase.auth'])
+angular.module('everedu.MainCtrl', ['firebase.auth', 'everedu.UserService'])
 // Controller used for login
 .controller('LoginCtrl', ['$scope', '$modal', '$state', 'Auth',
 
@@ -44,8 +44,8 @@ angular.module('everedu.MainCtrl', ['firebase.auth'])
     }
 ])
 // Controller used for signup
-.controller('SignupCtrl', ['$scope', '$modalInstance', 'Auth',
-    function($scope, $modalInstance, Auth) {
+.controller('SignupCtrl', ['$scope', '$modalInstance', 'Auth', 'Profile',
+    function($scope, $modalInstance, Auth, Profile) {
         $scope.$modalInstance = $modalInstance;
 
         $scope.account = {};
@@ -60,6 +60,10 @@ angular.module('everedu.MainCtrl', ['firebase.auth'])
                     sweetAlert('Congratulations!',
                         'You have successfully created the account',
                         'success');
+
+                    var profile = Profile(user.uid);
+                    profile.name = "Not set";
+                    profile.$save(); 
 
                     $modalInstance.close($scope.account);
                 }).catch(function(error) {
