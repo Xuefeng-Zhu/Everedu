@@ -7,6 +7,16 @@
 angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies', 'googlechart',
     'everedu.MainCtrl', 'everedu.UserCtrl', 'everedu.CourseCtrl'
 ])
+    // from https://github.com/firebase/angularfire-seed/blob/master/app/app.js
+    .run(['$rootScope', 'Auth',
+        function($rootScope, Auth) {
+            // track status of authentication
+            Auth.$onAuth(function(user) {
+                console.log(user)
+                $rootScope.user = !!user;
+            });
+        }
+    ])
     .config(['$stateProvider', '$urlRouterProvider',
         function($stateProvider, $urlRouterProvider) {
 
