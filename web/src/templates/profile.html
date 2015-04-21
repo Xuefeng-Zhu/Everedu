@@ -12,7 +12,7 @@
 			<div class="form-group">
 				<label for="name" class="col-sm-3 control-label">Name</label>
 				<div class="col-sm-9">
-					<h5 ng-hide="editing">{{user.name}}</h5>
+					<h5 ng-hide="editing">{{profile.name}}</h5>
 					<input type="text" id="name" class="form-control" placeholder="Full Name" required ng-model="copy.name" ng-show="editing">
 				</div>
 			</div>
@@ -20,8 +20,8 @@
 			<div class="form-group">
 				<label for="startTime" class="col-sm-3 control-label">Office Hour</label>
 				<div class="col-sm-9">
-					<h5 ng-hide="editing">{{user.officeHour}}</h5>
-					<timepicker id="startTime" ng-model="copy.startTime" hour-step="1" minute-step="15" ng-show="editing"></timepicker>
+					<h5 ng-hide="editing">{{profile.officeHour}}</h5>
+					<timepicker id="startTime" ng-model="copy.officeHour" hour-step="1" minute-step="15" ng-show="editing"></timepicker>
 				</div>
 			</div>
 		</form>
