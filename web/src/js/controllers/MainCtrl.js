@@ -21,7 +21,8 @@ angular.module('everedu.MainCtrl', ['firebase.auth'])
                 .then(function(user) {
                     $state.go('dashboard.user.profile');
                 }).catch(function(error) {
-                    sweetAlert(error.code, error.message, "error");
+                    console.log(error)
+                    sweetAlert(error.code||'Error', error.message, 'error');
                 });
         }
 
@@ -56,19 +57,20 @@ angular.module('everedu.MainCtrl', ['firebase.auth'])
         $scope.signup = function() {
             Auth.$createUser($scope.account)
                 .then(function(user) {
-                    sweetAlert("Congratulations!",
-                        "You have successfully created the account",
-                        "success");
+                    sweetAlert('Congratulations!',
+                        'You have successfully created the account',
+                        'success');
+
                     $modalInstance.close($scope.account);
                 }).catch(function(error) {
-                    sweetAlert(error.code, error.message, "error");
+                    sweetAlert(error.code, error.message, 'error');
                 });
         }
     }
 ])
 // Controller for the whole dashboard
-.controller('MainCtrl', ['$scope', '$rootScope', '$state',
-    function($scope, $rootScope, $state) {
+.controller('MainCtrl', ['$scope', '$rootScope', '$state', 'Auth',
+    function($scope, $rootScope, $state, Auth) {
         $rootScope.$state = $state;
         $scope.fullSidebar = true;
         /**
@@ -84,7 +86,10 @@ angular.module('everedu.MainCtrl', ['firebase.auth'])
          * @desc Log the user out, and go to the login page
          */
         $scope.logout = function() {
+            Auth.$unauth();
             $state.go('login');
         }
+
+
     }
 ])

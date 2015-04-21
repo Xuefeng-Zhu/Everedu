@@ -7,16 +7,25 @@
 angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies', 'googlechart',
     'everedu.MainCtrl', 'everedu.UserCtrl', 'everedu.CourseCtrl'
 ])
-    // from https://github.com/firebase/angularfire-seed/blob/master/app/app.js
-    .run(['$rootScope', 'Auth',
-        function($rootScope, Auth) {
-            // track status of authentication
-            Auth.$onAuth(function(user) {
-                console.log(user)
-                $rootScope.user = !!user;
-            });
-        }
-    ])
+// from https://github.com/firebase/angularfire-seed/blob/master/app/app.js
+.run(['$rootScope', 'Auth', '$state',
+    function($rootScope, Auth, $state) {
+        // track status of authentication
+        Auth.$onAuth(function(user) {
+            if (user){
+                $rootScope.uid = user.uid;
+            }
+        });
+
+        // from https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html#section-routers
+        $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
+            if (error === "AUTH_REQUIRED") {
+                swal("Please Login First");
+                $state.go("login");
+            }
+        });
+    }
+])
     .config(['$stateProvider', '$urlRouterProvider',
         function($stateProvider, $urlRouterProvider) {
 
@@ -34,7 +43,16 @@ angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies', 'googlechar
                     abstract: true,
                     url: '/dashboard',
                     templateUrl: 'templates/dashboard.html',
-                    controller: 'MainCtrl'
+                    controller: 'MainCtrl',
+                    resolve: {
+                        // from Angularfire guideline 
+                        // https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html#section-routers
+                        "currentAuth": ["Auth",
+                            function(Auth) {
+                                return Auth.$requireAuth();
+                            }
+                        ]
+                    }
                 })
                 .state('dashboard.user', {
                     abstract: true,
