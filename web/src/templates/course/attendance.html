@@ -6,19 +6,28 @@
 		</rd-widget-header>
 		<rd-widget-body>
 		<form>
+			<!-- Calendar -->
+			<div class="input-group">
+				<input type="text" class="form-control" datepicker-popup="yyyy/MM/dd" ng-model="cal.date" is-open="cal.show"  datepicker-options="dateOptions" close-text="Close" />
+				<span class="input-group-btn">
+					<button type="button" class="btn btn-default" ng-click="toggleCal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+				</span>
+			</div>
+			<!-- Validate Code -->
 			<div class="form-group">
 				<label for="code" class="control-label">Validate Code</label>
-				<div class="">
-					<input type="text" id="code" class="form-control" placeholder="Validate Code" autofocus ng-model="validateCode">
+				<div>
+					<input type="text" id="code" class="form-control" placeholder="Validate Code" autofocus ng-model="control.validateCode">
 				</div>
 			</div>
+			<!-- Buttons -->
 			<div class="form-group">
 				<button class="btn btn-sm btn-primary" ng-click="generateCode()">
 				<i class="fa fa-random"></i>
 				Generate Code</button>
-				<button class="btn btn-sm pull-right" ng-class="{'btn-warning': active, 'btn-success': !active}" ng-click="toggleState()">
-				<i class="fa" ng-class="{'fa-toggle-on': active, 'fa-toggle-off': !active}"></i>
-				Turn {{active? "off" : "on"}}</button>
+				<button class="btn btn-sm pull-right" ng-class="{'btn-warning': control.active, 'btn-success': !control.active}" ng-click="toggleState()">
+				<i class="fa" ng-class="{'fa-toggle-on': control.active, 'fa-toggle-off': !control.active}"></i>
+				Turn {{control.active? "off" : "on"}}</button>
 			</div>
 		</form>
 		</rd-widget-body>
@@ -44,8 +53,8 @@
 			<table class="table">
 				<tbody>
 					<tr ng-repeat="student in absentee">
-					<td>{{student.name}}</td>
-					<td>{{student.date}}</td>
+						<td>{{student.name}}</td>
+						<td>{{student.date}}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -63,12 +72,12 @@
 			<table class="table">
 				<tbody>
 					<tr ng-repeat="student in attendant">
-					<td>{{student.name}}</td>
-					<td>{{student.date}}</td>
+						<td>{{student.name}}</td>
+						<td>{{student.date}}</td>
 					</tr>				</tbody>
-			</table>
+				</table>
+			</div>
+			</rd-widget-body>
+			</rd-widget>
 		</div>
-		</rd-widget-body>
-		</rd-widget>
 	</div>
-</div>

@@ -73,10 +73,11 @@ angular.module('everedu.MainCtrl', ['firebase.auth', 'everedu.UserService'])
     }
 ])
 // Controller for the whole dashboard
-.controller('MainCtrl', ['$scope', '$rootScope', '$state', 'Auth',
-    function($scope, $rootScope, $state, Auth) {
+.controller('MainCtrl', ['$scope', '$rootScope', '$state', 'Auth', 'Profile',
+    function($scope, $rootScope, $state, Auth, Profile) {
         $rootScope.$state = $state;
         $scope.fullSidebar = true;
+        $scope.profile = Profile($scope.uid);
         /**
          * @name toggleSidebar
          * @desc Toggle the side bar between full size or small size
