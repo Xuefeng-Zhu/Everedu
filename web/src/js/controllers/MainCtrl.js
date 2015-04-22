@@ -67,7 +67,7 @@ angular.module('everedu.MainCtrl', ['firebase.auth', 'everedu.UserService'])
 
                     $modalInstance.close($scope.account);
                 }).catch(function(error) {
-                    sweetAlert(error.code, error.message, 'error');
+                    sweetAlert(error.code||'Error', error.message, 'error');
                 });
         }
     }
