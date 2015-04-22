@@ -29,7 +29,7 @@
 		<div class="table-responsive">
 			<table class="table">
 				<tbody>
-					<tr ng-repeat="quiz in completedQuiz | filter: search.quiz">
+					<tr ng-repeat="quiz in completedQuiz | filter: search.quiz" ng-click="selectQuiz(quiz)">
 						<td class="col-sm-1">{{$index+1}}</td>
 						<td>{{quiz.question}}</td>
 					</tr>

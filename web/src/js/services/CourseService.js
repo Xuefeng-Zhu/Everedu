@@ -41,3 +41,38 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
             };
         }
     ])
+    .factory('Quiz', ['$firebaseObject', '$firebaseArray', '$firebaseUtils', 'fbutil', '$stateParams',
+        function($firebaseObject, $firebaseArray, $firebaseUtils, fbutil, $stateParams) {
+            return {
+                // return the current quiz list stored in Firebase
+                getCurrentQuiz: function() {
+                    var ref =
+                        fbutil.ref(['quiz', $stateParams.courseID, 'current']
+                            .join('/'));
+                    return $firebaseArray(ref);
+                },
+                // return the completed quiz list stored in Firebase
+                getCompletedQuiz: function() {
+                    var ref =
+                        fbutil.ref(['quiz', $stateParams.courseID, 'completed']
+                            .join('/'));
+                    return $firebaseArray(ref);
+                },
+                addQuiz: function(quiz) {
+                    var state = quiz.completed ? 'completed' : 'current';
+                    var ref =
+                        fbutil.ref(['quiz', $stateParams.courseID, state]
+                            .join('/'));
+                    ref.child(quiz.$id).set($firebaseUtils.toJSON(quiz));
+                    return $firebaseObject(ref.child(quiz.$id));
+                },
+                removeQuiz: function(quiz) {
+                    var state = quiz.completed ? 'completed' : 'current';
+                    var ref =
+                        fbutil.ref(['quiz', $stateParams.courseID, state]
+                            .join('/'));
+                    ref.child(quiz.$id).remove();
+                }
+            };
+        }
+    ])
