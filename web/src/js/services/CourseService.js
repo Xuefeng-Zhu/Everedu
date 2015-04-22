@@ -9,7 +9,7 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
         function($firebaseObject, fbutil, $stateParams) {
             // return the course object stored in Firebase
             return function() {
-                var ref = fbutil.ref(['courses', $stateParams.courseID].join('/'));
+                var ref = fbutil.ref(['courses', $stateParams.courseID, 'info'].join('/'));
                 return $firebaseObject(ref);
             };
         }

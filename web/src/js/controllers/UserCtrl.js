@@ -58,10 +58,15 @@ angular.module('everedu.UserCtrl', ['everedu.UserService'])
 
             $scope.course.day = day;
 
-            $scope.course.startTime =
-                $filter('date')($scope.schedule.startTime, 'h:mm a');
-            $scope.course.endTime =
-                $filter('date')($scope.schedule.endTime, 'h:mm a');
+            if ($scope.schedule.startTime) {
+                $scope.course.startTime =
+                    $filter('date')($scope.schedule.startTime, 'h:mm a');
+
+            }
+            if ($scope.schedule.endTime) {
+                $scope.course.endTime =
+                    $filter('date')($scope.schedule.endTime, 'h:mm a');
+            }
 
             $modalInstance.close($scope.course);
         }

@@ -21,7 +21,7 @@ angular.module('everedu.UserService', ['firebase', 'firebase.utils'])
                     this.$add(course.courseID);
 
                     var ref =
-                        fbutil.ref(['courses', course.courseID].join('/'));
+                        fbutil.ref(['courses', course.courseID, 'info'].join('/'));
                     ref.set(course)
                 }
             });
