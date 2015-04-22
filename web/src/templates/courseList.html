@@ -8,7 +8,7 @@
     </li>
     <li class="sidebar-title"><span>Course List</span></li>
     <li class="sidebar-list" ng-repeat="course in courses">
-      <a ui-sref="dashboard.course.info({courseID: course.courseID})">{{course.courseID}}</a>
+      <a ui-sref="dashboard.course.info({courseID: course.$value})">{{course.$value}}</a>
     </li>
   </ul>
   <div class="sidebar-footer">

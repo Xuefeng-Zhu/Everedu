@@ -4,19 +4,11 @@
  * Description
  * define controllers used to manage course list, and user profile
  */
-angular.module('everedu.UserCtrl', [])
+angular.module('everedu.UserCtrl', ['everedu.UserService'])
 // controller used to store course list info
-.controller('UserCtrl', ['$scope', '$modal',
-    function($scope, $modal) {
-        $scope.courses = [{
-            courseID: 'CS242',
-            day: 'M',
-            time: '4:00pm-5:00pm'
-        }, {
-            courseID: 'CS425',
-            day: 'TR',
-            time: '9:30am-10:45am'
-        }];
+.controller('UserCtrl', ['$scope', '$modal', 'CourseList',
+    function($scope, $modal, CourseList) {
+        $scope.courses = CourseList($scope.uid);
 
         /**
          * @name openCourseModal
@@ -28,9 +20,9 @@ angular.module('everedu.UserCtrl', [])
                 templateUrl: 'CourseModal.html',
                 controller: 'CreateCourseCtrl',
             });
-
+            console.log($scope.courses)
             modal.result.then(function(course) {
-                $scope.courses.push(course);
+                $scope.courses.addCourse(course);
             });
         }
     }
@@ -96,7 +88,7 @@ angular.module('everedu.UserCtrl', [])
             } else {
                 $scope.copy = angular.copy($scope.profile);
             }
-            
+
             $scope.editing = !$scope.editing;
         }
     }
