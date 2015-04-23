@@ -30,11 +30,17 @@ angular.module('everedu.UserService', ['firebase', 'firebase.utils', 'everedu.Co
                         });
                     return courses;
                 },
-                addCourse: function(course) {
+                addCourse: function(course, uid, name) {
+                    var ref = fbutil.ref(['courses', course.courseID, 'students', uid].join('/'));
+                    ref.set(name);
+
                     courseList.$add(course.courseID);
                     courses.push(course);
                 },
-                deleteCourse: function(index) {
+                deleteCourse: function(index, uid) {
+                    var ref = fbutil.ref(['courses', index, 'students', uid].join('/'));
+                    ref.remove();
+
                     courseList.$remove(index);
                     courses.splice(index, 1);
                 }

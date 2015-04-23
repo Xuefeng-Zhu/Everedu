@@ -78,7 +78,7 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo, P
      * @desc Add the course into course list
      */
     $scope.joinCourse = function() {
-        CourseList.addCourse($scope.course);
+        CourseList.addCourse($scope.course, $scope.uid, $scope.profile.name);
         $scope.closesearchModal();
     }
 
@@ -87,7 +87,7 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo, P
      * @desc Delete the course from course list
      */
     $scope.onCourseDelete = function(index) {
-        CourseList.deleteCourse(index);
+        CourseList.deleteCourse(index, $scope.uid);
     }
 }
 

@@ -27,7 +27,7 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                 // return the attendant list stored in Firebase
                 getRecord: function(uid) {
                     var ref =
-                        fbutil.ref(['student', uid, $stateParams.courseID, 'attendance']
+                        fbutil.ref(['student', uid, 'courseDetail',$stateParams.courseID, 'attendance']
                             .join('/'));
                     return $firebaseArray(ref);
                 },
