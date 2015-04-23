@@ -5,7 +5,7 @@
  * Define LoginCtrl, AppCtrl
  */
 
-function LoginCtrl($scope, $ionicModal, $ionicPopup, $state) {
+function LoginCtrl($scope, $ionicModal, $ionicPopup, $state, Auth) {
     $scope.account = {};
     $ionicModal.fromTemplateUrl('templates/signup.html', {
         scope: $scope
@@ -24,61 +24,51 @@ function LoginCtrl($scope, $ionicModal, $ionicPopup, $state) {
     };
 
     /**
-    * @name createAccount
-    * @desc Create a new user account
-    */
+     * @name createAccount
+     * @desc Create a new user account
+     */
     $scope.createAccount = function() {
-        if ($scope.account.email == undefined || $scope.account.password == undefined ||
-            $scope.account.email == "" || $scope.account.password == "") {
-            $ionicPopup.alert({
-                title: 'Error!',
-                template: 'Your email or password is empty!',
-                okType: 'button-assertive'
-            });
-            return;
-        }
-        $scope.closeSignup();
+        Auth.$createUser($scope.account)
+            .then(function(user) {
+                $ionicPopup.alert({
+                    title: 'Congratulation!',
+                    template: 'You have successfully created the account.'
+                });
 
-        $ionicPopup.alert({
-            title: 'Congratulation!',
-            template: 'You have successfully registered the account.'
-        });
+                $scope.closeSignup();
+            }).catch(function(error) {
+                $ionicPopup.alert({
+                    title: error.code || 'Error',
+                    template: error.message,
+                    okType: 'button-assertive'
+                });
+            });
     }
 
     /**
-    * @name login
-    * @desc Login the user into the application, and go to courese page
-    */
+     * @name login
+     * @desc Login the user into the application, and go to courese page
+     */
     $scope.login = function() {
-        if ($scope.account.email == undefined || $scope.account.password == undefined ||
-            $scope.account.email == "" || $scope.account.password == "") {
-            $ionicPopup.alert({
-                title: 'Error!',
-                template: 'Your email or password is empty!',
-                okType: 'button-assertive'
+        Auth.$authWithPassword($scope.account)
+            .then(function(user) {
+                $state.go('courses');
+            }).catch(function(error) {
+                $ionicPopup.alert({
+                    title: error.code || 'Error',
+                    template: error.message,
+                    okType: 'button-assertive'
+                });
             });
-            return;
-        }
-        $state.go('courses');
     }
 }
 
 
-function AppCtrl($scope, $ionicModal, $timeout) {
-    $scope.course = {
-        courseID: 'CS423',
-        fullName: 'Operating Systems Design',
-        instructor: 'Tarek Abdelzaher',
-        location: '4126 Siebel Center',
-        day: 'MWF',
-        time: '10:00am-10:50am',
-        announcement: 'Update: NSF-sponsored (paid) research and development project\
-         opportunities are available for undergraduate students on selected topics. \
-         Contact instructor for detail. Graduate students interested in RAships are also welcome'
-    }
+function AppCtrl($scope, $ionicModal, $timeout, CourseInfo) {
+    $scope.course = CourseInfo();
 }
 
 
-angular.module('everedu.MainCtrl', [])
+angular.module('everedu.MainCtrl', ['firebase.auth', 'everedu.UserService'])
     .controller('AppCtrl', AppCtrl)
     .controller('LoginCtrl', LoginCtrl);

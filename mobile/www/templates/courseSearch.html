@@ -7,7 +7,7 @@
   </ion-header-bar>
   <ion-content>
     <!-- Course search form -->
-    <form ng-submit="searchCourse()">
+    <form ng-submit="searchCourse(courseNumber)">
       <div class="item item-input-inset">
         <label class="item-input-wrapper">
           <input type="text" placeholder="Course Number" ng-model="courseNumber">
@@ -42,7 +42,7 @@
         </a>
         <a class="item item-icon-left">
           <i class="icon ion-clock"></i>
-          {{course.time}}
+          {{course.startTime}}-{{course.endTime}}
         </a>
       </div>
       <div class="padding">

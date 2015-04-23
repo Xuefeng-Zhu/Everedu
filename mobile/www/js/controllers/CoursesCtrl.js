@@ -5,26 +5,9 @@
  * Define CourseCtrl
  */
 
-function CoursesCtrl($scope, $ionicModal, $ionicPopup) {
+function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo) {
     $scope.showDelete = false;
-    $scope.courses = [{
-        courseID: 'CS242',
-        day: 'M',
-        time: '4:00pm-5:00pm'
-    }, {
-        courseID: 'CS425',
-        day: 'TR',
-        time: '9:30am-10:45am'
-    }];
-
-    var course = {
-        courseID: 'CS423',
-        fullName: 'Operating Systems Design',
-        instructor: 'Tarek Abdelzaher',
-        location: '4126 Siebel Center',
-        day: 'MWF',
-        time: '10:00am-10:50am'
-    }
+    $scope.courses = CourseList.getCourses($scope.uid);
 
     $ionicModal.fromTemplateUrl('templates/courseSearch.html', {
         scope: $scope
@@ -42,32 +25,43 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup) {
     };
 
     /**
-    * @name search Course
-    * @desc Search for specific course 
-    */
-    $scope.searchCourse = function() {
-
-        $scope.course = course;
+     * @name search Course
+     * @desc Search for specific course, if the course number
+     * does not exist, info the user with popup
+     */
+    $scope.searchCourse = function(courseNumber) {
+        var course = CourseInfo(courseNumber.toUpperCase());
+        course.$loaded(function(res) {
+            if (res.courseID == undefined) { 
+                $ionicPopup.alert({
+                    title: 'Error',
+                    template: 'The course number does not exist!',
+                    okType: 'button-assertive'
+                });
+            } else {
+                $scope.course = course;
+            }
+        });
     }
 
     /**
-    * @name joinCourse
-    * @desc Add the course into course list
-    */
+     * @name joinCourse
+     * @desc Add the course into course list
+     */
     $scope.joinCourse = function() {
-        $scope.courses.push($scope.course);
+        CourseList.addCourse($scope.course);
         $scope.closesearchModal();
     }
 
     /**
-    * @name onCourseDelete
-    * @desc Delete the course from course list
-    */
-    $scope.onCourseDelete = function(course) {
-        $scope.courses.splice(course, 1);
+     * @name onCourseDelete
+     * @desc Delete the course from course list
+     */
+    $scope.onCourseDelete = function(index) {
+        CourseList.deleteCourse(index);
     }
 }
 
 
-angular.module('everedu.CoursesCtrl', [])
+angular.module('everedu.CoursesCtrl', ['everedu.UserService'])
     .controller('CoursesCtrl', CoursesCtrl);

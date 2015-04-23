@@ -17,7 +17,7 @@
         <div ui-sref="app.info({courseID: course.courseID})">
           {{course.courseID}}
           <span class="item-note">
-            {{course.time}} {{course.day}}
+            {{course.startTime}}-{{course.endTime}} ({{course.day}})
           </span>
         </div>
         <ion-delete-button class="ion-minus-circled"

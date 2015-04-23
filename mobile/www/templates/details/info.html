@@ -6,7 +6,7 @@
 				Announcement
 			</div>
 			<div class="item item-text-wrap">
-				{{course.announcement}}
+				{{course.announcement||"No Announcement"}}
 			</div>
 		</div>
 		<!-- Course Description Card -->
@@ -37,7 +37,7 @@
 				</a>
 				<a class="item item-icon-left">
 					<i class="icon ion-clock"></i>
-					{{course.time}}
+					{{course.startTime}}-{{course.endTime}}
 				</a>
 			</div>
 		</div>
