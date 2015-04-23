@@ -37,7 +37,7 @@
 			<div class="form-group">
 				<label for="courseID" class="col-sm-2 control-label">Course ID</label>
 				<div class="col-sm-9">
-					<h5 ng-hide="editing.description">{{course.courseID}}</h5>
+					<h5 ng-hide="editing.description">{{course.courseID}}({{course.$ref().parent().key()}})</h5>
 					<input type="text" id="courseID" class="form-control" placeholder="Course ID" required autofocus ng-model="copy.courseID" ng-show="editing.description">
 				</div>
 			</div>

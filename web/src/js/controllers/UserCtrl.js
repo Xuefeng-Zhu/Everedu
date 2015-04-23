@@ -20,8 +20,8 @@ angular.module('everedu.UserCtrl', ['everedu.UserService'])
                 templateUrl: 'CourseModal.html',
                 controller: 'CreateCourseCtrl',
             });
-            console.log($scope.courses)
             modal.result.then(function(course) {
+                course.instructor = $scope.profile.name;
                 $scope.courses.addCourse(course);
             });
         }

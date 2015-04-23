@@ -21,7 +21,6 @@ angular.module('everedu.MainCtrl', ['firebase.auth', 'everedu.UserService'])
                 .then(function(user) {
                     $state.go('dashboard.user.profile');
                 }).catch(function(error) {
-                    console.log(error)
                     sweetAlert(error.code||'Error', error.message, 'error');
                 });
         }

@@ -18,6 +18,7 @@ angular.module('everedu.UserService', ['firebase', 'firebase.utils'])
 
             var CourseList = $firebaseArray.$extend({
                 addCourse: function(course) {
+                    course.courseID.toUpperCase();
                     this.$add(course.courseID);
 
                     var ref =
