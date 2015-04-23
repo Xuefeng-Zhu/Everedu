@@ -5,9 +5,38 @@
  * Define CourseCtrl
  */
 
-function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo) {
+function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo, Profile) {
     $scope.showDelete = false;
     $scope.courses = CourseList.getCourses($scope.uid);
+    $scope.profile = Profile($scope.uid);
+    $scope.profile.$loaded(function(res) {
+        if (res.name == undefined) {
+            // code from http://ionicframework.com/docs/api/service/$ionicPopup/
+            $ionicPopup.show({
+                template: '<input type="text" ng-model="profile.name">',
+                title: 'Enter Your name',
+                scope: $scope,
+                buttons: [{
+                    text: 'Cancel',
+                    onTap: function(e) {
+                        e.preventDefault();
+                        alert("You are not able to close this message");
+                    }
+                }, {
+                    text: '<b>Save</b>',
+                    type: 'button-positive',
+                    onTap: function(e) {
+                        if (!$scope.profile.name) {
+                            //don't allow the user to close unless he enters wifi password
+                            e.preventDefault();
+                        } else {
+                            $scope.profile.$save();
+                        }
+                    }
+                }]
+            });
+        }
+    })
 
     $ionicModal.fromTemplateUrl('templates/courseSearch.html', {
         scope: $scope
@@ -32,7 +61,7 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo) {
     $scope.searchCourse = function(courseNumber) {
         var course = CourseInfo(courseNumber.toUpperCase());
         course.$loaded(function(res) {
-            if (res.courseID == undefined) { 
+            if (res.courseID == undefined) {
                 $ionicPopup.alert({
                     title: 'Error',
                     template: 'The course number does not exist!',

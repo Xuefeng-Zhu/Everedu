@@ -5,6 +5,14 @@
  * Service used for user management
  */
 angular.module('everedu.UserService', ['firebase', 'firebase.utils', 'everedu.CourseService'])
+    .factory('Profile', ['$firebaseObject', 'fbutil',
+        function($firebaseObject, fbutil) {
+            return function(uid) {
+                var ref = fbutil.ref(['student', uid, 'profile'].join('/'));
+                return $firebaseObject(ref);
+            };
+        }
+    ])
     .factory('CourseList', ['$firebaseArray', 'fbutil', 'CourseInfo',
         function($firebaseArray, fbutil, CourseInfo) {
             var courseList = [];

@@ -25,19 +25,12 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                     return $firebaseObject(ref);
                 },
                 // return the attendant list stored in Firebase
-                getAttendant: function() {
+                getRecord: function(uid) {
                     var ref =
-                        fbutil.ref(['attendance', $stateParams.courseID, 'attendant']
+                        fbutil.ref(['student', uid, $stateParams.courseID, 'attendance']
                             .join('/'));
                     return $firebaseArray(ref);
                 },
-                // return the absentee list stored in Firebase
-                getAbsentee: function() {
-                    var ref =
-                        fbutil.ref(['attendance', $stateParams.courseID, 'absentee']
-                            .join('/'));
-                    return $firebaseArray(ref);
-                }
             };
         }
     ])

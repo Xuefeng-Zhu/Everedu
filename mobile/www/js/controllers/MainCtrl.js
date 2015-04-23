@@ -64,8 +64,9 @@ function LoginCtrl($scope, $ionicModal, $ionicPopup, $state, Auth) {
 }
 
 
-function AppCtrl($scope, $ionicModal, $timeout, CourseInfo) {
+function AppCtrl($scope, CourseInfo, Profile) {
     $scope.course = CourseInfo();
+    $scope.profile = Profile($scope.uid);
 }
 
 

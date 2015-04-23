@@ -1,10 +1,10 @@
 <ion-view view-title="Attendance">
 	<ion-content>
 		<!-- Course search form -->
-		<form ng-submit="takeAttendance()">
+		<form ng-submit="takeAttendance(validateCode)">
 			<div class="item item-input-inset">
 				<label class="item-input-wrapper">
-					<input type="text" placeholder="Validate Code">
+					<input type="text" placeholder="Validate Code" ng-model="validateCode">
 				</label>
 				<button class="button button-small">
 				Submit
