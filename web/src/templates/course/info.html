@@ -12,7 +12,7 @@
 			<!-- Annoucement Field -->
 			<div class="form-group">
 				<div class="col-sm-12">
-					<h5 ng-hide="editing.announcement">{{course.announcement}}</h5>
+					<h5 ng-hide="editing.announcement">{{course.announcement||"No Announcement"}}</h5>
 					<textarea class="form-control" rows="3" ng-model="copy.announcement" ng-show="editing.announcement">
 					</textarea>
 				</div>
