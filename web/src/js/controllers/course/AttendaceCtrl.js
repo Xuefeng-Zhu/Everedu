@@ -17,8 +17,15 @@ angular.module('everedu.AttendanceCtrl', [])
         $scope.absentee = Attendance.getAbsentee($scope.cal.date.toDateString());
 
         $scope.chartLabels = ['Attendant', 'Absentee'];
-        $scope.chartData = [50, 10];
+        $scope.chartData = [0, 0];
 
+        $scope.$watch("attendant.length", function(value) {
+            $scope.chartData[0] = value;
+        })
+
+        $scope.$watch("absentee.length", function(value) {
+            $scope.chartData[1] = value;
+        })
         /**
          * @name generateCode
          * @desc Generate validate code used for attendance
