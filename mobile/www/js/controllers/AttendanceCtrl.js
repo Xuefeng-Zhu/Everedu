@@ -7,7 +7,6 @@
 
 function AttendanceCtrl($scope, $ionicPopup, Attendance) {
     $scope.records = Attendance.getRecord($scope.uid);
-
     $scope.control = Attendance.getControl(new Date().toDateString());
 
     /**
@@ -29,7 +28,7 @@ function AttendanceCtrl($scope, $ionicPopup, Attendance) {
         };
         record.date = new Date().toDateString();
 
-        $scope.records.$add(record);
+        Attendance.addRecord($scope.uid, $scope.profile.name, record);
     }
 
     function errorAlert(message) {

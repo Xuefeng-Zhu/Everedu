@@ -9,13 +9,15 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
         function($firebaseObject, fbutil, $stateParams) {
             // return the course object stored in Firebase
             return function(courseID) {
-                var ref = fbutil.ref(['courses', courseID||$stateParams.courseID, 'info'].join('/'));
+                var ref = fbutil.ref(['courses', courseID || $stateParams.courseID, 'info'].join('/'));
                 return $firebaseObject(ref);
             };
         }
     ])
     .factory('Attendance', ['$firebaseObject', '$firebaseArray', 'fbutil', '$stateParams',
         function($firebaseObject, $firebaseArray, fbutil, $stateParams) {
+            var records;
+
             return {
                 // return the control object stored in Firebase
                 getControl: function(date) {
@@ -27,10 +29,28 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                 // return the attendant list stored in Firebase
                 getRecord: function(uid) {
                     var ref =
-                        fbutil.ref(['student', uid, 'courseDetail',$stateParams.courseID, 'attendance']
+                        fbutil.ref(['student', uid, 'courseDetail', $stateParams.courseID, 'attendance']
                             .join('/'));
-                    return $firebaseArray(ref);
+                    records = $firebaseArray(ref);
+                    return records;
                 },
+                addRecord: function(uid, name, record) {
+                    var ref = records.$ref()
+                    ref.child(record.date).set(record);
+
+                    ref =
+                        fbutil.ref(['attendance', $stateParams.courseID, record.date, 'absentee', uid]
+                            .join('/'));
+                    ref.remove();
+
+                    ref = 
+                    fbutil.ref(['attendance', $stateParams.courseID, record.date, 'attendant', uid]
+                            .join('/'));
+                    ref.set({
+                        name: name,
+                        date: new Date().toString()
+                    })
+                }
             };
         }
     ])
