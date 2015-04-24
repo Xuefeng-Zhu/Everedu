@@ -7,6 +7,7 @@
 angular.module('everedu.UserService', ['firebase', 'firebase.utils', 'everedu.CourseService'])
     .factory('Profile', ['$firebaseObject', 'fbutil',
         function($firebaseObject, fbutil) {
+            // return student profile object in Firebase
             return function(uid) {
                 var ref = fbutil.ref(['student', uid, 'profile'].join('/'));
                 return $firebaseObject(ref);
@@ -19,6 +20,7 @@ angular.module('everedu.UserService', ['firebase', 'firebase.utils', 'everedu.Co
             var courses = [];
 
             return {
+                // get a list of courses the students enroll in
                 getCourses: function(uid) {
                     var ref = fbutil.ref(['student', uid, 'courses'].join('/'));
                     courseList = $firebaseArray(ref);
@@ -30,6 +32,7 @@ angular.module('everedu.UserService', ['firebase', 'firebase.utils', 'everedu.Co
                         });
                     return courses;
                 },
+                // enroll in a course
                 addCourse: function(course, uid, name) {
                     var ref = fbutil.ref(['courses', course.courseID, 'students', uid].join('/'));
                     ref.set(name);
@@ -37,6 +40,7 @@ angular.module('everedu.UserService', ['firebase', 'firebase.utils', 'everedu.Co
                     courseList.$add(course.courseID);
                     courses.push(course);
                 },
+                // drop a course
                 deleteCourse: function(index, uid) {
                     var ref = fbutil.ref(['courses', index, 'students', uid].join('/'));
                     ref.remove();

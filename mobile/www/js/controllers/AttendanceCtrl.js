@@ -31,6 +31,10 @@ function AttendanceCtrl($scope, $ionicPopup, Attendance) {
         Attendance.addRecord($scope.uid, $scope.profile.name, record);
     }
 
+    /**
+     * @name errorAlert
+     * @desc show an error message
+     */
     function errorAlert(message) {
         $ionicPopup.alert({
             title: 'Error',

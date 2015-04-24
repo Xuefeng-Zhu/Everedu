@@ -1,8 +1,8 @@
 /**
- * everedu.UserService Module
+ * everedu.CourseService Module
  *
  * Description
- * Service used for user management
+ * Service used for course management
  */
 angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
     .factory('CourseInfo', ['$firebaseObject', 'fbutil', '$stateParams',
@@ -34,15 +34,18 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                     records = $firebaseArray(ref);
                     return records;
                 },
+                // add attendance record in Firebase
                 addRecord: function(uid, name, record) {
                     var ref = records.$ref()
                     ref.child(record.date).set(record);
 
+                    // remove from absentee
                     ref =
                         fbutil.ref(['attendance', $stateParams.courseID, record.date, 'absentee', uid]
                             .join('/'));
                     ref.remove();
 
+                    // add to attendant
                     ref = 
                     fbutil.ref(['attendance', $stateParams.courseID, record.date, 'attendant', uid]
                             .join('/'));
