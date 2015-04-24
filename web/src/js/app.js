@@ -4,7 +4,7 @@
 
 'use strict';
 
-angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies', 'googlechart',
+angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies', 'chart.js',
     'everedu.MainCtrl', 'everedu.UserCtrl', 'everedu.CourseCtrl'
 ])
 // from https://github.com/firebase/angularfire-seed/blob/master/app/app.js

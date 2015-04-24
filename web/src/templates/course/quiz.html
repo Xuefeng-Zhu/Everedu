@@ -41,7 +41,7 @@
 	</div>
 	<div class="col-lg-6">
 		<!-- Quiz Detail Panel -->
-		<rd-widget ng-show="selectedQuiz">
+		<rd-widget ng-if="selectedQuiz">
 		<rd-widget-header icon="fa-eye" title="Quiz Detail">
 		<button class="btn btn-sm" ng-class="{'btn-success': !selectedQuiz.completed, 'btn-warning': selectedQuiz.completed}" ng-click="toggleComplete()">
 		<i class="fa" ng-class="{'fa-check-square-o': !selectedQuiz.completed, 'fa-square-o': selectedQuiz.completed}"></i>
@@ -55,19 +55,17 @@
 			</span>
 			<input type="text" class="form-control" ng-model="choice.content" disabled="true">
 		</div>
-
-		<div google-chart chart="columnChart"></div>
-
+		<canvas class="chart chart-bar" data="chartData" labels="chartLabels"></canvas>
 		</rd-widget-body>
 		</rd-widget>
 	</div>
 </div>
 <script type="text/ng-template" id="QuizModal.html">
 <div class="modal-header">
-		<h3 class="modal-title">Create New Course</h3>
+			<h3 class="modal-title">Create New Course</h3>
 </div>
 <div class="modal-body">
-		<form>
+			<form>
 		<!-- Question Field -->
 		<div class="form-group">
 			<label for="question" class="control-label">Question</label>

@@ -13,44 +13,11 @@ angular.module('everedu.AttendanceCtrl', [])
             date: new Date()
         };
         $scope.control = Attendance.getControl($scope.cal.date.toDateString());
-
-        $scope.pieChart = {};
-        $scope.pieChart.data = {
-            "cols": [{
-                id: "t",
-                label: "Status",
-                type: "string"
-            }, {
-                id: "s",
-                label: "Count",
-                type: "number"
-            }],
-            "rows": [{
-                c: [{
-                    v: "Attendant"
-                }, {
-                    v: 40
-                }]
-            }, {
-                c: [{
-                    v: "Absentee"
-                }, {
-                    v: 5
-                }]
-            }]
-        };
-
-        $scope.pieChart.type = 'PieChart';
-        $scope.pieChart.cssStyle = "height:270px; width:400px;";
-
         $scope.attendant = Attendance.getAttendant($scope.cal.date.toDateString());
         $scope.absentee = Attendance.getAbsentee($scope.cal.date.toDateString());
-        // for (var i = 0; i < 50; i++) {
-        //     $scope.absentee.push({
-        //         name: "Student " + parseInt(Math.random() * 1000),
-        //         date: new Date().toString()
-        //     })
-        // }
+
+        $scope.chartLabels = ['Attendant', 'Absentee'];
+        $scope.chartData = [50, 10];
 
         /**
          * @name generateCode

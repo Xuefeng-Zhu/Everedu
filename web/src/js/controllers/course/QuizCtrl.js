@@ -12,17 +12,8 @@ angular.module('everedu.QuizCtrl', [])
         $scope.currentQuiz = Quiz.getCurrentQuiz();
         $scope.completedQuiz = Quiz.getCompletedQuiz();
 
-        $scope.chartData = [
-            ['Choice', 'Count'],
-            ['A', 50],
-            ['B', 20],
-            ['C', 5],
-            ['D', 10]
-        ];
-        $scope.columnChart = {
-            data: $scope.chartData,
-            type: 'ColumnChart'
-        };
+        $scope.chartLabels = ['A', 'B', 'C', 'D'];
+        $scope.chartData = [[11, 12, 14, 20]];
 
         /**
          * @name openQuizModal
