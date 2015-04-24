@@ -27,6 +27,12 @@ angular.module('everedu.AttendanceCtrl', [])
             $scope.chartData[1] = value;
         });
 
+        $scope.$watch("cal.date", function(value) {
+            $scope.control = Attendance.getControl(value.toDateString());
+            $scope.attendant = Attendance.getAttendant(value.toDateString());
+            $scope.absentee = Attendance.getAbsentee(value.toDateString());
+        })
+
         /**
          * @name generateCode
          * @desc Generate validate code used for attendance
@@ -41,11 +47,11 @@ angular.module('everedu.AttendanceCtrl', [])
          * @desc toggle the option if accepting attendance record
          */
         $scope.toggleState = function() {
-            if ($scope.control.active == undefined){
+            if ($scope.control.active == undefined) {
                 $scope.control.active = false;
                 Attendance.initAbsentee();
             }
-            
+
             if ($scope.control.validateCode == undefined) {
                 sweetAlert('Warning', 'Please generate code first!', 'error');
                 return;
