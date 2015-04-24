@@ -1,7 +1,7 @@
 <ion-view view-title="QuizList">
 	<ion-content>
 		<ul class="list">
-			<a class="item" ng-repeat="quiz in quizs" ui-sref="app.quizDetail({quizID: $index})">
+			<a class="item" ng-repeat="quiz in quizs" ui-sref="app.quizDetail({status: status, quizID: $index})">
 				{{$index+1}}. {{quiz.question}}
 			</a>
 		</ul>

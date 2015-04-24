@@ -5,29 +5,47 @@
  * The controllers used to manage quiz state interface
  */
 
-function QuizCtrl($scope) {
-    $scope.currentQuiz = 5;
-    $scope.completedQuiz = 10;
+function QuizCtrl($scope, Quiz) {
+    $scope.currentQuiz = Quiz.getCurrentQuiz();
+    $scope.completedQuiz = Quiz.getCompletedQuiz();
 }
 
-function QuizListCtrl($scope) {
-    $scope.quizs = [{
-        question: "What is result of 1+1?"
-    }];
-    for (var i = 0; i < 10; i++) {
-        $scope.quizs.splice(0, 0, angular.copy($scope.quizs[0]));
+function QuizListCtrl($scope, $stateParams, Quiz) {
+    $scope.status = $stateParams.status;
+
+    if ($scope.status == 'current') {
+        $scope.quizs = Quiz.getCurrentQuiz();
+    } else {
+        $scope.quizs = Quiz.getCompletedQuiz();
     }
 }
 
-function QuizDetailCtrl($scope) {
-    $scope.quiz = {
-        question: "What is result of 1+1?",
-        choices: ["2", "3", "4", "5"]
-    };
+function QuizDetailCtrl($scope, $state, $stateParams, Quiz) {
+    $scope.status = $stateParams.status;
+    $scope.quizID = parseInt($stateParams.quizID);
 
+    if ($scope.status == 'current') {
+        $scope.quizs = Quiz.getCurrentQuiz();
+    } else {
+        $scope.quizs = Quiz.getCompletedQuiz();
+    }
+
+    $scope.quizs.$loaded(function(res){
+        $scope.quiz = $scope.quizs[$scope.quizID];
+    })
+    
+
+    $scope.submit = function() {
+        Quiz.submitQuiz($scope.quiz);
+        if ($scope.quizID < $scope.quizs.length-1){
+            $state.go('app.quizDetail', {status: $scope.status, quizID: $scope.quizID});
+        } else {
+            $state.go('app.quizList', {status: $scope.status});
+        }
+    }
 }
 
-angular.module('everedu.QuizCtrl', [])
+angular.module('everedu.QuizCtrl', ['everedu.CourseService'])
     .controller('QuizCtrl', QuizCtrl)
     .controller('QuizListCtrl', QuizListCtrl)
     .controller('QuizDetailCtrl', QuizDetailCtrl);

@@ -46,8 +46,8 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                     ref.remove();
 
                     // add to attendant
-                    ref = 
-                    fbutil.ref(['attendance', $stateParams.courseID, record.date, 'attendant', uid]
+                    ref =
+                        fbutil.ref(['attendance', $stateParams.courseID, record.date, 'attendant', uid]
                             .join('/'));
                     ref.set({
                         name: name,
@@ -59,35 +59,43 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
     ])
     .factory('Quiz', ['$firebaseObject', '$firebaseArray', '$firebaseUtils', 'fbutil', '$stateParams',
         function($firebaseObject, $firebaseArray, $firebaseUtils, fbutil, $stateParams) {
+            var currentQuiz = null;
+            var completedQuiz = null;
+
             return {
                 // return the current quiz list stored in Firebase
                 getCurrentQuiz: function() {
-                    var ref =
-                        fbutil.ref(['quiz', $stateParams.courseID, 'current']
-                            .join('/'));
-                    return $firebaseArray(ref);
+                    if (currentQuiz == null) {
+                        var ref =
+                            fbutil.ref(['quiz', $stateParams.courseID, 'current']
+                                .join('/'));
+                        currentQuiz = $firebaseArray(ref);
+                    }
+
+                    return currentQuiz;
                 },
                 // return the completed quiz list stored in Firebase
                 getCompletedQuiz: function() {
-                    var ref =
-                        fbutil.ref(['quiz', $stateParams.courseID, 'completed']
-                            .join('/'));
-                    return $firebaseArray(ref);
+                    if (completedQuiz == null) {
+                        var ref =
+                            fbutil.ref(['quiz', $stateParams.courseID, 'completed']
+                                .join('/'));
+                        completedQuiz = $firebaseArray(ref);
+                    }
+
+                    return completedQuiz;
                 },
-                addQuiz: function(quiz) {
-                    var state = quiz.completed ? 'completed' : 'current';
+                // submit the quiz result
+                submitQuiz: function(quiz) {
                     var ref =
-                        fbutil.ref(['quiz', $stateParams.courseID, state]
+                        fbutil.ref(['quiz', $stateParams.courseID, 'current',
+                                quiz.$id, 'result', quiz.selection
+                            ]
                             .join('/'));
-                    ref.child(quiz.$id).set($firebaseUtils.toJSON(quiz));
-                    return $firebaseObject(ref.child(quiz.$id));
-                },
-                removeQuiz: function(quiz) {
-                    var state = quiz.completed ? 'completed' : 'current';
-                    var ref =
-                        fbutil.ref(['quiz', $stateParams.courseID, state]
-                            .join('/'));
-                    ref.child(quiz.$id).remove();
+                    ref.transaction(function(value) {
+                        return value + 1;
+                    })
+                    console.log(currentQuiz)
                 }
             };
         }

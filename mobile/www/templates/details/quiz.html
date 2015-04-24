@@ -4,13 +4,13 @@
 			<a class="item item-icon-left" ui-sref="app.quizList({status: 'current'})">
 				<i class="icon ion-edit"></i>
 				Current Quiz
-				<span class="badge badge-assertive">{{currentQuiz}}</span>
+				<span class="badge badge-assertive">{{currentQuiz.length}}</span>
 			</a>
 
 			<a class="item item-icon-left" ui-sref="app.quizList({status: 'completed'})">
 				<i class="icon ion-flag"></i>
 				Completed Quiz
-				<span class="badge badge-assertive">{{completedQuiz}}</span>
+				<span class="badge badge-assertive">{{completedQuiz.length}}</span>
 			</a>
 		</div>
 	</ion-content>

@@ -5,20 +5,24 @@
 				{{quiz.question}}
 			</div>
 			<div class="item item-body">
-				<ion-radio ng-repeat="choice in quiz.choices"
-					ng-value="choice"
-					ng-model="data.clientSide">
-					{{ choice }}
+				<ion-radio ng-repeat="(index, choice) in quiz.choices"
+					ng-value="index"
+					ng-model="quiz.selection">
+					{{ choice.content }}
 				</ion-radio>
 			</div>
 			<div class="item tabs tabs-secondary tabs-icon-left">
-				<a class="tab-item">
+				<a class="tab-item" ng-click="submit()">
 					<i class="icon ion-android-checkbox-outline"></i>
 					Submit
 				</a>
-				<a class="tab-item">
+				<a class="tab-item" ui-sref="app.quizDetail({status: status, quizID: quizID+1})" ng-if="quizID < quizs.length-1">
 					<i class="icon ion-arrow-right-c"></i>
 					Next Question
+				</a>
+				<a class="tab-item" ng-if="quizID == quizs.length-1">
+					<i class="icon ion-happy-outline"></i>
+					End of Quiz List
 				</a>
 			</div>
 		</div>

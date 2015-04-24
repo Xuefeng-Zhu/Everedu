@@ -81,7 +81,7 @@ angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl',
             }
         })
         .state('app.quizDetail', {
-            url: '/quizDetail/:quizID',
+            url: '/quizDetail/:status/:quizID',
             views: {
                 'menuContent': {
                     templateUrl: 'templates/details/quizDetail.html',
