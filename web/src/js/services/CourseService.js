@@ -9,13 +9,28 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
         function($firebaseObject, fbutil, $stateParams) {
             // return the course object stored in Firebase
             return function() {
-                var ref = fbutil.ref(['courses', $stateParams.courseID, 'info'].join('/'));
+                var ref =
+                    fbutil.ref(['courses', $stateParams.courseID, 'info']
+                        .join('/'));
                 return $firebaseObject(ref);
             };
         }
     ])
     .factory('Attendance', ['$firebaseObject', '$firebaseArray', 'fbutil', '$stateParams',
         function($firebaseObject, $firebaseArray, fbutil, $stateParams) {
+            var absentee = null;
+            var students = null;
+
+            function initAbsenteeHelper() {
+                var ref = absentee.$ref();
+                angular.forEach(students, function(value, key) {
+                    ref.child(value.$id).set({
+                        name: value.$value,
+                        date: new Date().toString()
+                    });
+                })
+            }
+
             return {
                 // return the control object stored in Firebase
                 getControl: function(date) {
@@ -25,18 +40,30 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                     return $firebaseObject(ref);
                 },
                 // return the attendant list stored in Firebase
-                getAttendant: function() {
+                getAttendant: function(date) {
                     var ref =
-                        fbutil.ref(['attendance', $stateParams.courseID, 'attendant']
+                        fbutil.ref(['attendance', $stateParams.courseID, date, 'attendant']
                             .join('/'));
                     return $firebaseArray(ref);
                 },
                 // return the absentee list stored in Firebase
-                getAbsentee: function() {
+                getAbsentee: function(date) {
                     var ref =
-                        fbutil.ref(['attendance', $stateParams.courseID, 'absentee']
+                        fbutil.ref(['attendance', $stateParams.courseID, date, 'absentee']
                             .join('/'));
-                    return $firebaseArray(ref);
+                    absentee = $firebaseArray(ref);
+                    return absentee;
+                },
+                initAbsentee: function() {
+                    if (students) {
+                        initAbsenteeHelper();
+                    } else {
+                        var ref =
+                            fbutil.ref(['courses', $stateParams.courseID, 'students']
+                                .join('/'));
+                        students = $firebaseArray(ref);
+                        students.$loaded(initAbsenteeHelper);
+                    }
                 }
             };
         }

@@ -43,13 +43,14 @@ angular.module('everedu.AttendanceCtrl', [])
         $scope.pieChart.type = 'PieChart';
         $scope.pieChart.cssStyle = "height:270px; width:400px;";
 
-        $scope.attendant = $scope.absentee = [];
-        for (var i = 0; i < 50; i++) {
-            $scope.absentee.push({
-                name: "Student " + parseInt(Math.random() * 1000),
-                date: new Date().toString()
-            })
-        }
+        $scope.attendant = Attendance.getAttendant($scope.cal.date.toDateString());
+        $scope.absentee = Attendance.getAbsentee($scope.cal.date.toDateString());
+        // for (var i = 0; i < 50; i++) {
+        //     $scope.absentee.push({
+        //         name: "Student " + parseInt(Math.random() * 1000),
+        //         date: new Date().toString()
+        //     })
+        // }
 
         /**
          * @name generateCode
@@ -67,6 +68,7 @@ angular.module('everedu.AttendanceCtrl', [])
         $scope.toggleState = function() {
             if ($scope.control.active == undefined){
                 $scope.control.active = false;
+                Attendance.initAbsentee();
             }
             
             if ($scope.control.validateCode == undefined) {
