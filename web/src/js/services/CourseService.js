@@ -29,7 +29,7 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                         name: value.$value,
                         date: new Date().toString()
                     });
-                })
+                });
             }
 
             return {
@@ -66,6 +66,20 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                         students = $firebaseArray(ref);
                         students.$loaded(initAbsenteeHelper);
                     }
+                },
+                setAbsentee: function() {
+                    
+                    angular.forEach(absentee, function(value, key) {
+                        var date = new Date(value.date).toDateString();
+                        var ref =
+                            fbutil.ref(['student', value.$id, 'courseDetail', $stateParams.courseID,
+                                'attendance', date
+                            ].join('/'));
+                        ref.set({
+                            date: date,
+                            status: 'miss'
+                        });
+                    });
                 }
             };
         }

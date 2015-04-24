@@ -19,14 +19,17 @@ angular.module('everedu.AttendanceCtrl', [])
         $scope.chartLabels = ['Attendant', 'Absentee'];
         $scope.chartData = [0, 0];
 
+        // update chart attendant value based on attendant length
         $scope.$watch("attendant.length", function(value) {
             $scope.chartData[0] = value;
         });
 
+        // update chart absentee value based on absentee length
         $scope.$watch("absentee.length", function(value) {
             $scope.chartData[1] = value;
         });
 
+        // update control, attendant, and absentee if another date gets selected
         $scope.$watch("cal.date", function(value) {
             $scope.control = Attendance.getControl(value.toDateString());
             $scope.attendant = Attendance.getAttendant(value.toDateString());
@@ -59,6 +62,10 @@ angular.module('everedu.AttendanceCtrl', [])
 
             $scope.control.active = !$scope.control.active;
             $scope.control.$save();
+
+            if (!$scope.control.active) {
+                Attendance.setAbsentee();
+            }
         }
 
         /**
