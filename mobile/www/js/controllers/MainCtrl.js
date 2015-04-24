@@ -65,9 +65,13 @@ function LoginCtrl($scope, $rootScope, $ionicModal, $ionicPopup, $state, Auth) {
 }
 
 
-function AppCtrl($scope, CourseInfo, Profile) {
+function AppCtrl($scope, $rootScope, CourseInfo, Profile) {
     $scope.course = CourseInfo();
     $scope.profile = Profile($scope.uid);
+
+    $rootScope.$on('$stateChangeSuccess', function() {
+        $scope.course = CourseInfo();
+    })
 }
 
 
