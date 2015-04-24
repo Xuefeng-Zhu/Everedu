@@ -19,7 +19,7 @@ function AttendanceCtrl($scope, $ionicPopup, Attendance) {
             return;
         }
         if ($scope.control.validateCode != validateCode) {
-            errorAlert('The validate is incorrect.');
+            errorAlert('The validate code is incorrect.');
             return;
         }
 

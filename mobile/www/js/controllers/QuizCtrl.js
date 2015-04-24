@@ -38,7 +38,7 @@ function QuizDetailCtrl($scope, $state, $stateParams, Quiz) {
     $scope.submit = function() {
         Quiz.submitQuiz($scope.quiz);
         if ($scope.quizID < $scope.quizs.length-1){
-            $state.go('app.quizDetail', {status: $scope.status, quizID: $scope.quizID});
+            $state.go('app.quizDetail', {status: $scope.status, quizID: $scope.quizID+1});
         } else {
             $state.go('app.quizList', {status: $scope.status});
         }
