@@ -12,8 +12,32 @@ angular.module('everedu.QuizCtrl', [])
         $scope.currentQuiz = Quiz.getCurrentQuiz();
         $scope.completedQuiz = Quiz.getCompletedQuiz();
 
-        $scope.chartLabels = ['A', 'B', 'C', 'D'];
-        $scope.chartData = [[11, 12, 14, 20]];
+        $scope.chartData = [];
+        // check if a quiz question gets selected 
+        $scope.$watch('selectedQuiz.question', function() {
+            if ($scope.selectedQuiz == undefined) return;
+            var charCode = 'A'.charCodeAt();
+            $scope.chartLabels = [];
+            $scope.chartData[0] = [];
+            angular.forEach($scope.selectedQuiz.result, function(value, key) {
+                $scope.chartLabels.push(String.fromCharCode(charCode + key));
+                $scope.chartData[0].push(value);
+            });
+
+            watchResult();
+        });
+
+        /**
+         * @name watchResult
+         * @desc update the chart data if quiz result updates
+         */
+        function watchResult() {
+            $scope.$watch('selectedQuiz.result', function(resultValue) {
+                angular.forEach(resultValue, function(value, key){
+                    $scope.chartData[0][key] = value;
+                })
+            })
+        }
 
         /**
          * @name openQuizModal
@@ -60,6 +84,7 @@ angular.module('everedu.QuizCtrl', [])
 
         $scope.quiz = {
             choices: [],
+            result: [],
             completed: false
         };
 
@@ -71,6 +96,7 @@ angular.module('everedu.QuizCtrl', [])
             $scope.quiz.choices.push({
                 content: ""
             });
+            $scope.quiz.result.push(0);
         }
 
         /**
