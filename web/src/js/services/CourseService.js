@@ -67,8 +67,8 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                         students.$loaded(initAbsenteeHelper);
                     }
                 },
+                // set students in absentee list missing class
                 setAbsentee: function() {
-                    
                     angular.forEach(absentee, function(value, key) {
                         var date = new Date(value.date).toDateString();
                         var ref =

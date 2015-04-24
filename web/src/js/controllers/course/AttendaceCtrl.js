@@ -50,14 +50,16 @@ angular.module('everedu.AttendanceCtrl', [])
          * @desc toggle the option if accepting attendance record
          */
         $scope.toggleState = function() {
-            if ($scope.control.active == undefined) {
-                $scope.control.active = false;
-                Attendance.initAbsentee();
-            }
-
+            // check if validateCode has been set
             if ($scope.control.validateCode == undefined) {
                 sweetAlert('Warning', 'Please generate code first!', 'error');
                 return;
+            }
+
+            // check if first time set active
+            if ($scope.control.active == undefined) {
+                $scope.control.active = false;
+                Attendance.initAbsentee();
             }
 
             $scope.control.active = !$scope.control.active;
