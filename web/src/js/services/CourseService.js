@@ -1,8 +1,8 @@
 /**
- * everedu.UserService Module
+ * everedu.CourseService Module
  *
  * Description
- * Service used for user management
+ * Service used for course management
  */
 angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
     .factory('CourseInfo', ['$firebaseObject', 'fbutil', '$stateParams',
@@ -21,6 +21,7 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
             var absentee = null;
             var students = null;
 
+            // add students in the course student list into the absentee list
             function initAbsenteeHelper() {
                 var ref = absentee.$ref();
                 angular.forEach(students, function(value, key) {
@@ -54,6 +55,7 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                     absentee = $firebaseArray(ref);
                     return absentee;
                 },
+                // initlize the absentee list when the attendance control get initialized
                 initAbsentee: function() {
                     if (students) {
                         initAbsenteeHelper();
@@ -85,6 +87,7 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                             .join('/'));
                     return $firebaseArray(ref);
                 },
+                // add the quiz into corresponding list
                 addQuiz: function(quiz) {
                     var state = quiz.completed ? 'completed' : 'current';
                     var ref =
@@ -93,6 +96,7 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                     ref.child(quiz.$id).set($firebaseUtils.toJSON(quiz));
                     return $firebaseObject(ref.child(quiz.$id));
                 },
+                // remove the quiz from its list
                 removeQuiz: function(quiz) {
                     var state = quiz.completed ? 'completed' : 'current';
                     var ref =

@@ -21,11 +21,12 @@ angular.module('everedu.AttendanceCtrl', [])
 
         $scope.$watch("attendant.length", function(value) {
             $scope.chartData[0] = value;
-        })
+        });
 
         $scope.$watch("absentee.length", function(value) {
             $scope.chartData[1] = value;
-        })
+        });
+
         /**
          * @name generateCode
          * @desc Generate validate code used for attendance

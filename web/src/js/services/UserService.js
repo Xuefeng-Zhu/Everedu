@@ -7,6 +7,7 @@
 angular.module('everedu.UserService', ['firebase', 'firebase.utils'])
     .factory('Profile', ['$firebaseObject', 'fbutil',
         function($firebaseObject, fbutil) {
+            // return instructor profile object in Firebase
             return function(uid) {
                 var ref = fbutil.ref(['instructor', uid, 'profile'].join('/'));
                 return $firebaseObject(ref);
@@ -17,6 +18,7 @@ angular.module('everedu.UserService', ['firebase', 'firebase.utils'])
         function($firebaseArray, fbutil) {
 
             var CourseList = $firebaseArray.$extend({
+                // create a new course
                 addCourse: function(course) {
                     course.courseID = course.courseID.toUpperCase();
                     this.$add(course.courseID);
@@ -27,6 +29,7 @@ angular.module('everedu.UserService', ['firebase', 'firebase.utils'])
                 }
             });
 
+            // return a course list in Firebase
             return function(uid) {
                 var ref = fbutil.ref(['instructor', uid, 'courses'].join('/'));
                 return new CourseList(ref);
