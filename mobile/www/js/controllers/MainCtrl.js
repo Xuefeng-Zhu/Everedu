@@ -5,7 +5,7 @@
  * Define LoginCtrl, AppCtrl
  */
 
-function LoginCtrl($scope, $ionicModal, $ionicPopup, $state, Auth) {
+function LoginCtrl($scope, $rootScope, $ionicModal, $ionicPopup, $state, Auth) {
     $scope.account = {};
     $ionicModal.fromTemplateUrl('templates/signup.html', {
         scope: $scope
@@ -52,6 +52,7 @@ function LoginCtrl($scope, $ionicModal, $ionicPopup, $state, Auth) {
     $scope.login = function() {
         Auth.$authWithPassword($scope.account)
             .then(function(user) {
+                $rootScope.uid = user.uid;
                 $state.go('courses');
             }).catch(function(error) {
                 $ionicPopup.alert({
