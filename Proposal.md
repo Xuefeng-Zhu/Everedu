@@ -39,6 +39,10 @@ The main features of this application include
 	+ Integrate Firebase into the both motile client and web client
 		+ Be able to login in using Firebase account system
 		+ Be able to store/fetch data using Firebase
+			+ Get profile data
+			+ Get and update course info
+			+ Get attendance record and take attendance
+			+ Get quiz list and quiz question detail, and submit quiz selection  
 		+ Generate View based on real time data
 + Fourth Week
 	+ Work on asking question feature
