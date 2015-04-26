@@ -121,3 +121,16 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
             };
         }
     ])
+    .factory('Presentation', ['$firebaseArray', 'fbutil', '$stateParams',
+        function($firebaseArray, fbutil, $stateParams) {
+            // return the course object stored in Firebase
+            return {
+                getRequests: function(request) {
+                    var ref =
+                        fbutil.ref(['presentation', $stateParams.courseID]
+                            .join('/'));
+                    return $firebaseArray(ref);
+                }
+            }
+        }
+    ])

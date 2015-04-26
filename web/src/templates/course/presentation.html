@@ -13,7 +13,16 @@ width: 100%;
 		<div class="table-responsive">
 			<table class="table">
 				<tbody>
-					<tr><td>Frank</td><td><i class="fa fa-check"></i></td></tr>
+					<tr ng-repeat="request in requests">
+						<td class="col-sm-8">{{request.name}}</td>
+						<!-- Accept Request -->
+						<td ng-if="request.state=='w'"><a class="btn btn-xs btn-info"tooltip="Click to accept the request" ng-click="acceptRequest(request)"><i class="fa fa-clock-o"></i></a></td>
+						<!-- Presenting -->
+						<td ng-if="request.state=='p'"><a class="btn btn-xs btn-link"tooltip="Presenting...."><i class="fa fa-microphone"></i></a></td>
+						<!-- Delete Request -->
+						<td><a class="btn btn-xs btn-danger" ng-click="deleteRequest(request)">
+						<i class="fa fa-trash-o"></i></a></td>
+					</tr>
 					<tr>
 					</tbody>
 				</table>
