@@ -5,7 +5,7 @@
  * Define InfoCtrl, and inject other course related controller
  */
 angular.module('everedu.CourseCtrl', ['everedu.AttendanceCtrl', 'everedu.QuizCtrl',
-    'everedu.CourseService'
+    'everedu.CourseService', 'everedu.PresentCtrl'
 ])
 // controller used to manage course informaton page
 .controller('InfoCtrl', ['$scope', '$filter', 'CourseInfo',

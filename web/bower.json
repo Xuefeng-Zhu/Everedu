@@ -22,7 +22,8 @@
     "firebase": "~2.2.4",
     "angularfire": "~1.0.0",
     "sweetalert": "~0.5.0",
-    "angular-chart.js": "~0.6.0"
+    "angular-chart.js": "~0.6.0",
+    "simplewebrtc": "~1.15.3"
   },
   "repository": {
     "type": "git",

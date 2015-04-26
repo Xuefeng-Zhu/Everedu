@@ -12,7 +12,7 @@ angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies', 'chart.js',
     function($rootScope, Auth, $state) {
         // track status of authentication
         Auth.$onAuth(function(user) {
-            if (user){
+            if (user) {
                 $rootScope.uid = user.uid;
             }
         });
@@ -106,6 +106,15 @@ angular.module('everedu', ['ui.bootstrap', 'ui.router', 'ngCookies', 'chart.js',
                         'content@dashboard': {
                             templateUrl: 'templates/course/quiz.html',
                             controller: 'QuizCtrl'
+                        }
+                    }
+                })
+                .state('dashboard.course.presentation', {
+                    url: '/presentation',
+                    views: {
+                        'content@dashboard': {
+                            templateUrl: 'templates/course/presentation.html',
+                            controller: 'PresentCtrl'
                         }
                     }
                 })
