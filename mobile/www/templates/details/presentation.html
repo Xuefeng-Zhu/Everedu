@@ -8,14 +8,22 @@ width: 100%;
 	<ion-content>
 		<div class="list card">
 			<div class="item item-body">
-				<video id="localVideo"></video>
-			</div>
-			<div class="item tabs tabs-secondary tabs-icon-left">
-				<a class="tab-item assertive" ng-click="submit()">
-					<i class="icon ion-mic-c"></i>
-					{{stateText[request.state]}}
-				</a>
-			</div>
+			<video id="localVideo"></video>
 		</div>
-	</ion-content>
+		<div class="item tabs tabs-secondary tabs-icon-left">
+			<a class="tab-item assertive" ng-click="requestPresetation()" ng-show="request.state=='i'">
+				<i class="icon ion-mic-c"></i>
+				I Want To Present!
+			</a>
+			<a class="tab-item calm" ng-click="cancelRequest()" ng-show="request.state=='w'">
+				<i class="icon ion-clock"></i>
+				Waiting...Click To Cancel.
+			</a>
+			<a class="tab-item energized" ng-click="finishPresentation()" ng-show="request.state=='p'">
+				<i class="icon ion-power"></i>
+				Finish Presentation
+			</a>
+		</div>
+	</div>
+</ion-content>
 </ion-view>

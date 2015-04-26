@@ -6,21 +6,46 @@
  */
 angular.module('everedu.PresentCtrl', [])
 // controller used to manage addentance page
-.controller('PresentCtrl', ['$scope',
-    function($scope) {
-        $scope.stateText = {
-            i: 'I Want To Present!',
-            w: 'Please Wait For Instructor\'s Proval.',
-            p: 'Finish Presentation.'
-        }
-
+.controller('PresentCtrl', ['$scope', 'Presentation',
+    function($scope, Presentation) {
+        var webrtc = null;
         $scope.request = {
             state: 'i',
         }
 
-        startPresent()
+        $scope.requestPresetation = function() {
+            $scope.request.state = 'w';
+            $scope.request.name = $scope.profile.name;
+            $scope.request = Presentation.pushRequest($scope.request);
+        }
+
+        $scope.cancelRequest = function() {
+            $scope.request.$remove();
+            $scope.request = {
+                state: 'i',
+            }
+        }
+
+        $scope.finishPresentation = function() {
+            webrtc.stopLocalVideo();
+            webrtc.leaveRoom();
+            $scope.cancelRequest();
+        }
+
+        $scope.$watch('request.state', function(value) {
+            if (value == 'p') {
+                startPresent();
+            }
+        })
+
         function startPresent() {
-            var webrtc = new SimpleWebRTC({
+            if (webrtc != null) {
+                webrtc.joinRoom('everedu');
+                webrtc.startLocalVideo();
+                return;
+            }
+
+            webrtc = new SimpleWebRTC({
                 // code from https://github.com/HenrikJoreteg/SimpleWebRTC
                 localVideoEl: 'localVideo',
                 autoRequestMedia: true,
