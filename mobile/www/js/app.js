@@ -2,7 +2,7 @@
  * The bootstrap script used to config the whole application
  */
 angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl',
-    'everedu.AttendanceCtrl', 'everedu.QuizCtrl'
+    'everedu.AttendanceCtrl', 'everedu.QuizCtrl', 'everedu.PresentCtrl'
 ])
 
 .run(function($ionicPlatform, $rootScope, Auth) {
@@ -86,6 +86,15 @@ angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl',
                 'menuContent': {
                     templateUrl: 'templates/details/quizDetail.html',
                     controller: 'QuizDetailCtrl'
+                }
+            }
+        })
+        .state('app.presentation', {
+            url: '/presentation',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/details/presentation.html',
+                    controller: 'PresentCtrl'
                 }
             }
         });

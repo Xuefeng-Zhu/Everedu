@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "firebase": "~2.2.4",
-    "angularfire": "~1.0.0"
+    "angularfire": "~1.0.0",
+    "simplewebrtc": "~1.15.3"
   }
 }

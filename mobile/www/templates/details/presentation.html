@@ -1,0 +1,21 @@
+<style>
+#localVideo {
+height: 400px;
+width: 100%;
+}
+</style>
+<ion-view view-title="Presetation">
+	<ion-content>
+		<div class="list card">
+			<div class="item item-body">
+				<video id="localVideo"></video>
+			</div>
+			<div class="item tabs tabs-secondary tabs-icon-left">
+				<a class="tab-item assertive" ng-click="submit()">
+					<i class="icon ion-mic-c"></i>
+					{{stateText[request.state]}}
+				</a>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
