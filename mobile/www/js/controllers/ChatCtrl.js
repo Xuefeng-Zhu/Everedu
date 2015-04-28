@@ -19,7 +19,7 @@ function ChatCtrl($scope, $ionicScrollDelegate, Chat) {
     $scope.sendMessage = function() {
         $scope.chat.$add({
             name: $scope.profile.name,
-            message: $scope.message
+            content: $scope.message
         });
 
         $scope.message = '';

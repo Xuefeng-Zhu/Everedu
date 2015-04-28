@@ -1,9 +1,9 @@
 <ion-view view-title="Chat">
 	<ion-content>
 		<div class="list">
-			<a class="item" ng-repeat="item in chat">
-				<h2>{{item.name}}</h2>
-				<p>{{item.message}}</p>
+			<a class="item" ng-repeat="message in chat">
+				<h2>{{message.name}}</h2>
+				<p>{{message.content}}</p>
 			</a>
 		</div>
 	</ion-content>
