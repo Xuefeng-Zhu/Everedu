@@ -134,3 +134,12 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
             }
         }
     ])
+    .factory('Chat', ['$firebaseArray', 'fbutil', '$stateParams',
+        function($firebaseArray, fbutil, $stateParams) {
+            // return the latest chat array stored in Firebase
+            return function(limit) {
+                var ref = fbutil.ref(['chat', $stateParams.courseID].join('/'));
+                return $firebaseArray(ref.limitToLast(limit));
+            };
+        }
+    ])

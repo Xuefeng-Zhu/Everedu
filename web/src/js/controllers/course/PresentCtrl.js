@@ -18,7 +18,6 @@ angular.module('everedu.PresentCtrl', [])
         $scope.deleteRequest = function(request) {
             $scope.requests.$remove(request);
         }
-
         startPresentation();
     }
 ])
@@ -27,7 +26,11 @@ var webrtc;
 
 function startPresentation() {
     // code from https://github.com/HenrikJoreteg/SimpleWebRTC
-    if (webrtc != null) return;
+    if (webrtc != null) {
+        webrtc.joinRoom('everedu');
+        return;
+    }
+
     webrtc = new SimpleWebRTC({
         remoteVideosEl: 'remoteVideos',
         autoRequestMedia: true,
