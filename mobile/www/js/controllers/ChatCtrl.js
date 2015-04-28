@@ -8,10 +8,14 @@
 function ChatCtrl($scope, $ionicScrollDelegate, Chat) {
     $scope.chat = Chat();
 
+    // scoll to the bottom of screen when chat loaded
     $scope.chat.$loaded(function(){
         $ionicScrollDelegate.scrollBottom(true);
     })
 
+    /**
+     * Send out a message and scoll to the bottom
+     */
     $scope.sendMessage = function() {
         $scope.chat.$add({
             name: $scope.profile.name,
@@ -21,7 +25,6 @@ function ChatCtrl($scope, $ionicScrollDelegate, Chat) {
         $scope.message = '';
         $ionicScrollDelegate.scrollBottom(true);
     }
-
 }
 
 
