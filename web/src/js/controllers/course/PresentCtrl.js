@@ -10,14 +10,23 @@ angular.module('everedu.PresentCtrl', [])
     function($scope, Presentation, Chat) {
         $scope.requests = Presentation.getRequests();
         $scope.chat = Chat(10);
-
         $scope.message = {
             content: ''
         }
 
+        $scope.requests.$loaded(function(){
+            angular.forEach($scope.requests, function(value) {
+                if (value.state == 'p') {
+                    $scope.presenting = true;
+                }
+            })
+        })
+
         $scope.acceptRequest = function(request) {
             request.state = 'p';
             $scope.requests.$save(request);
+
+            $scope.presenting = true;
         }
 
         $scope.deleteRequest = function(request) {
@@ -38,6 +47,7 @@ angular.module('everedu.PresentCtrl', [])
 ])
 
 var webrtc;
+var presenting = false;
 
 function startPresentation() {
     // code from https://github.com/HenrikJoreteg/SimpleWebRTC
