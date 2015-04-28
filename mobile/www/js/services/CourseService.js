@@ -101,8 +101,8 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
     ])
     .factory('Presentation', ['$firebaseObject', 'fbutil', '$stateParams',
         function($firebaseObject, fbutil, $stateParams) {
-            // return the course object stored in Firebase
             return {
+                // add request to firebase and return the request object
                 pushRequest: function(request) {
                     var ref =
                         fbutil.ref(['presentation', $stateParams.courseID]
@@ -115,7 +115,7 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
     ])
     .factory('Chat', ['$firebaseArray', 'fbutil', '$stateParams',
         function($firebaseArray, fbutil, $stateParams) {
-            // return the course object stored in Firebase
+            // return the latest chat array stored in Firebase
             return function() {
                 var ref = fbutil.ref(['chat', $stateParams.courseID].join('/'));
                 return $firebaseArray(ref.limitToLast(100));
