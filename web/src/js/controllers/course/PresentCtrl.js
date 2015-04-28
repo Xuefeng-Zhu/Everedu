@@ -6,9 +6,14 @@
  */
 angular.module('everedu.PresentCtrl', [])
 // controller used to manage addentance page
-.controller('PresentCtrl', ['$scope', 'Presentation',
-    function($scope, Presentation) {
+.controller('PresentCtrl', ['$scope', 'Presentation', 'Chat',
+    function($scope, Presentation, Chat) {
         $scope.requests = Presentation.getRequests();
+        $scope.chat = Chat(10);
+
+        $scope.message = {
+            content: ''
+        }
 
         $scope.acceptRequest = function(request) {
             request.state = 'p';
@@ -18,6 +23,16 @@ angular.module('everedu.PresentCtrl', [])
         $scope.deleteRequest = function(request) {
             $scope.requests.$remove(request);
         }
+
+        /**
+         * Send out a message and scoll to the bottom
+         */
+        $scope.sendMessage = function() {
+            $scope.message.name = $scope.profile.name;
+            $scope.chat.$add($scope.message);
+            $scope.message.content = '';
+        }
+
         startPresentation();
     }
 ])

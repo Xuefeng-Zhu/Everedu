@@ -5,7 +5,7 @@ width: 100%;
 </style>
 <div class="row">
 	<div class="col-lg-4">
-		<!-- Control Panel -->
+		<!-- Request List -->
 		<rd-widget>
 		<rd-widget-header icon="fa-list" title="Request List">
 		</rd-widget-header>
@@ -30,15 +30,41 @@ width: 100%;
 			</rd-widget-body>
 			</rd-widget>
 			<br>
-		</div>
-		<div class="col-lg-8">
-			<!-- Attendant List Panel -->
+			<!-- Chat Window -->
 			<rd-widget>
-			<rd-widget-header icon="fa-video-camera" title="Video">
+			<rd-widget-header icon="fa-comments" title="Chat">
 			</rd-widget-header>
-			<rd-widget-body>
-			<div id="remoteVideos"></div>
-			</rd-widget-body>
-			</rd-widget>
+			<rd-widget-body classes="medium no-padding">
+			<div class="table-responsive">
+				<table class="table">
+					<tbody>
+						<tr ng-repeat="message in chat">
+							<td class="col-sm-4">{{message.name}}:</td>
+							<td>{{message.content}}</td>
+						</tr>
+						<tr>
+						</tbody>
+					</table>
+				</div>
+				</rd-widget-body>
+				<rd-widget-footer>
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="New Message" ng-model="message.content">
+					<span class="input-group-btn">
+						<button class="btn btn-primary" type="button" ng-click="sendMessage()">Send</button>
+					</span>
+				</div>
+				</rd-widget-footer>
+				</rd-widget>
+			</div>
+			<div class="col-lg-8">
+				<!-- Attendant List Panel -->
+				<rd-widget>
+				<rd-widget-header icon="fa-video-camera" title="Video">
+				</rd-widget-header>
+				<rd-widget-body>
+				<div id="remoteVideos"></div>
+				</rd-widget-body>
+				</rd-widget>
+			</div>
 		</div>
-	</div>
