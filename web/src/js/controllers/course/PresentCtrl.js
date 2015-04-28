@@ -14,6 +14,9 @@ angular.module('everedu.PresentCtrl', [])
             content: ''
         }
 
+        /**
+         * Check if there is someone is presenting
+         */
         $scope.requests.$loaded(function(){
             angular.forEach($scope.requests, function(value) {
                 if (value.state == 'p') {
@@ -22,6 +25,9 @@ angular.module('everedu.PresentCtrl', [])
             })
         })
 
+        /**
+         * Accept students' request and enable him to present
+         */
         $scope.acceptRequest = function(request) {
             request.state = 'p';
             $scope.requests.$save(request);
@@ -29,6 +35,9 @@ angular.module('everedu.PresentCtrl', [])
             $scope.presenting = true;
         }
 
+        /**
+         * Delete a request from the requests list
+         */
         $scope.deleteRequest = function(request) {
             $scope.requests.$remove(request);
         }
@@ -56,6 +65,7 @@ function startPresentation() {
         return;
     }
 
+    // create a webtrc object
     webrtc = new SimpleWebRTC({
         remoteVideosEl: 'remoteVideos',
         autoRequestMedia: true,
