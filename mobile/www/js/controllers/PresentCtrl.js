@@ -32,8 +32,19 @@ angular.module('everedu.PresentCtrl', [])
             $scope.cancelRequest();
         }
 
-        $scope.$watch('request.state', function(value) {
-            if (value == 'p') {
+        $scope.$watch('request.state', function(newValue, oldValue) {
+            if (newValue==undefined && (oldValue=='w' || oldValue=='p')){
+                if (oldValue == 'p') {
+                    webrtc.stopLocalVideo();
+                    webrtc.leaveRoom();
+                }
+
+                $scope.request = {
+                    state: 'i'
+                }
+            }
+
+            if (newValue == 'p') {
                 startPresent();
             }
         })

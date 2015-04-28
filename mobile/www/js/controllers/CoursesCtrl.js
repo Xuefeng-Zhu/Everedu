@@ -4,7 +4,6 @@
  * Description
  * Define CourseCtrl
  */
-
 function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo, Profile) {
     $scope.showDelete = false;
     $scope.courses = CourseList.getCourses($scope.uid);
@@ -37,13 +36,11 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo, P
             });
         }
     })
-
     $ionicModal.fromTemplateUrl('templates/courseSearch.html', {
         scope: $scope
     }).then(function(modal) {
         $scope.searchModal = modal;
     });
-
     // show the search modal
     $scope.opensearchModal = function() {
         $scope.searchModal.show();
@@ -52,7 +49,6 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo, P
     $scope.closesearchModal = function() {
         $scope.searchModal.hide();
     };
-
     /**
      * @name search Course
      * @desc Search for specific course, if the course number
@@ -72,7 +68,6 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo, P
             }
         });
     }
-
     /**
      * @name joinCourse
      * @desc Add the course into course list
@@ -81,7 +76,6 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo, P
         CourseList.addCourse($scope.course, $scope.uid, $scope.profile.name);
         $scope.closesearchModal();
     }
-
     /**
      * @name onCourseDelete
      * @desc Delete the course from course list
@@ -90,7 +84,7 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo, P
         CourseList.deleteCourse(index, $scope.uid);
     }
 }
-
-
-angular.module('everedu.CoursesCtrl', ['everedu.UserService'])
+angular.module('everedu.CoursesCtrl', ['everedu.AttendanceCtrl', 'everedu.QuizCtrl',
+    'everedu.PresentCtrl', 'everedu.ChatCtrl', 'everedu.UserService'
+])
     .controller('CoursesCtrl', CoursesCtrl);

@@ -1,0 +1,19 @@
+<ion-view view-title="Chat">
+	<ion-content>
+		<div class="list">
+			<a class="item" ng-repeat="item in chat">
+				<h2>{{item.name}}</h2>
+				<p>{{item.message}}</p>
+			</a>
+		</div>
+	</ion-content>
+	<ion-footer-bar class="bar bar-footer item-input-inset">
+		<label class="item-input-wrapper">
+			<i class="icon ion-chatbox placeholder-icon"></i>
+			<input type="text" placeholder="New Message" ng-model='message'>
+		</label>
+		<button class="button button-outline button-balanced" ng-click="sendMessage()">
+		Send
+		</button>
+	</ion-footer-bar>
+</ion-view>

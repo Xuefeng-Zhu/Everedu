@@ -1,9 +1,7 @@
 /**
  * The bootstrap script used to config the whole application
  */
-angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl',
-    'everedu.AttendanceCtrl', 'everedu.QuizCtrl', 'everedu.PresentCtrl'
-])
+angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl'])
 
 .run(function($ionicPlatform, $rootScope, Auth) {
     $ionicPlatform.ready(function() {
@@ -95,6 +93,15 @@ angular.module('everedu', ['ionic', 'everedu.MainCtrl', 'everedu.CoursesCtrl',
                 'menuContent': {
                     templateUrl: 'templates/details/presentation.html',
                     controller: 'PresentCtrl'
+                }
+            }
+        })
+        .state('app.chat', {
+            url: '/chat',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/details/chat.html',
+                    controller: 'ChatCtrl'
                 }
             }
         });

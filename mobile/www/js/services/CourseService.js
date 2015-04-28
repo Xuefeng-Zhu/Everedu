@@ -95,7 +95,6 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                     ref.transaction(function(value) {
                         return value + 1;
                     })
-                    console.log(currentQuiz)
                 }
             };
         }
@@ -112,5 +111,14 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                     return $firebaseObject(requestRef);
                 }
             }
+        }
+    ])
+    .factory('Chat', ['$firebaseArray', 'fbutil', '$stateParams',
+        function($firebaseArray, fbutil, $stateParams) {
+            // return the course object stored in Firebase
+            return function() {
+                var ref = fbutil.ref(['chat', $stateParams.courseID].join('/'));
+                return $firebaseArray(ref.limitToLast(100));
+            };
         }
     ])
