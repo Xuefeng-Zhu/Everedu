@@ -61,6 +61,7 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
         function($firebaseObject, $firebaseArray, $firebaseUtils, fbutil, $stateParams) {
             var currentQuiz = null;
             var completedQuiz = null;
+            var submission = null;
 
             return {
                 // return the current quiz list stored in Firebase
@@ -85,9 +86,27 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
 
                     return completedQuiz;
                 },
+                // return the students' submission result stored in Firebase
+                getSubmission: function(uid) {
+                    if (submission == null) {
+                        var ref =
+                            fbutil.ref(['student', uid, 'courseDetail', $stateParams.courseID,
+                                'quiz', 'submission'
+                            ].join('/'));
+
+                        submission = $firebaseObject(ref);
+                    }
+                    return submission;
+                },
+
                 // submit the quiz result
                 submitQuiz: function(quiz) {
-                    var ref =
+                    if (submission[quiz.$id] != undefined) return false;
+
+                    submission[quiz.$id] = quiz.selection;
+                    submission.$save();
+
+                    ref =
                         fbutil.ref(['quiz', $stateParams.courseID, 'current',
                                 quiz.$id, 'result', quiz.selection
                             ]
@@ -95,6 +114,8 @@ angular.module('everedu.CourseService', ['firebase', 'firebase.utils'])
                     ref.transaction(function(value) {
                         return value + 1;
                     })
+
+                    return true;
                 }
             };
         }
