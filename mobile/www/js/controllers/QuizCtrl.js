@@ -4,7 +4,6 @@
  * Description
  * The controllers used to manage quiz state interface
  */
-
 function QuizCtrl($scope, Quiz) {
     $scope.currentQuiz = Quiz.getCurrentQuiz();
     $scope.completedQuiz = Quiz.getCompletedQuiz();
@@ -12,7 +11,6 @@ function QuizCtrl($scope, Quiz) {
 
 function QuizListCtrl($scope, $stateParams, Quiz) {
     $scope.status = $stateParams.status;
-
     if ($scope.status == 'current') {
         $scope.quizs = Quiz.getCurrentQuiz();
     } else {
@@ -34,24 +32,23 @@ function QuizDetailCtrl($scope, $state, $stateParams, $ionicPopup, Quiz) {
     // load the specific quiz question
     $scope.quizs.$loaded(function(res) {
         $scope.quiz = $scope.quizs[$scope.quizID];
-    }).then(function(){
-        $scope.submission.$loaded(function(){
+    }).then(function() {
+        $scope.submission.$loaded(function() {
             $scope.quiz.selection = $scope.submission[$scope.quiz.$id];
         });
     });
+
 
     $scope.submit = function() {
         var is_success = Quiz.submitQuiz($scope.quiz);
         if (!is_success) {
             $ionicPopup.alert({
-                title:'Error',
+                title: 'Error',
                 template: 'You have already submitted your answer for this quiz',
                 okType: 'button-assertive'
             });
-
             return;
         }
-
         // go to next question or quiz list
         if ($scope.quizID < $scope.quizs.length - 1) {
             $state.go('app.quizDetail', {
@@ -65,7 +62,6 @@ function QuizDetailCtrl($scope, $state, $stateParams, $ionicPopup, Quiz) {
         }
     }
 }
-
 angular.module('everedu.QuizCtrl', ['everedu.CourseService'])
     .controller('QuizCtrl', QuizCtrl)
     .controller('QuizListCtrl', QuizListCtrl)
