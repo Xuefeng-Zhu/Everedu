@@ -37,6 +37,9 @@ ionic build ios/android
 ionic emulate ios/android
 ```
 
+## Known Issues
++ WebRTC is not working in WebView
+
 ## Credit
 This project is built with following tools
 
