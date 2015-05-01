@@ -5,6 +5,9 @@
  * Define LoginCtrl, AppCtrl
  */
 
+/**
+ * Define the bevior when user login and sign up for a new account
+ */
 function LoginCtrl($scope, $rootScope, $ionicModal, $ionicPopup, $state, Auth) {
     $scope.account = {};
     $ionicModal.fromTemplateUrl('templates/signup.html', {
@@ -37,6 +40,8 @@ function LoginCtrl($scope, $rootScope, $ionicModal, $ionicPopup, $state, Auth) {
 
                 $scope.closeSignup();
             }).catch(function(error) {
+
+                // show error info
                 $ionicPopup.alert({
                     title: error.code || 'Error',
                     template: error.message,
@@ -55,6 +60,8 @@ function LoginCtrl($scope, $rootScope, $ionicModal, $ionicPopup, $state, Auth) {
                 $rootScope.uid = user.uid;
                 $state.go('courses');
             }).catch(function(error) {
+
+                // show error info
                 $ionicPopup.alert({
                     title: error.code || 'Error',
                     template: error.message,
@@ -64,7 +71,9 @@ function LoginCtrl($scope, $rootScope, $ionicModal, $ionicPopup, $state, Auth) {
     }
 }
 
-
+/**
+ * Store selected course info and user info
+ */
 function AppCtrl($scope, $rootScope, CourseInfo, Profile) {
     $scope.course = CourseInfo();
     $rootScope.profile = Profile($scope.uid);

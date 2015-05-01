@@ -4,12 +4,17 @@
  * Description
  * Define CourseCtrl
  */
+
+/**
+ * Load course list, ask for user profile, and manage course list
+ */
 function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo, Profile) {
     $scope.showDelete = false;
     $scope.courses = CourseList.getCourses($scope.uid);
     $scope.profile = Profile($scope.uid);
     $scope.profile.$loaded(function(res) {
         if (res.name == undefined) {
+
             // code from http://ionicframework.com/docs/api/service/$ionicPopup/
             $ionicPopup.show({
                 template: '<input type="text" ng-model="profile.name">',
@@ -26,6 +31,7 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo, P
                     type: 'button-positive',
                     onTap: function(e) {
                         if (!$scope.profile.name) {
+
                             //don't allow the user to close unless he enters wifi password
                             e.preventDefault();
                         } else {
@@ -36,19 +42,23 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo, P
             });
         }
     })
+
     $ionicModal.fromTemplateUrl('templates/courseSearch.html', {
         scope: $scope
     }).then(function(modal) {
         $scope.searchModal = modal;
     });
+
     // show the search modal
     $scope.opensearchModal = function() {
         $scope.searchModal.show();
     };
+
     // hide the search modal
     $scope.closesearchModal = function() {
         $scope.searchModal.hide();
     };
+
     /**
      * @name search Course
      * @desc Search for specific course, if the course number
@@ -68,6 +78,7 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo, P
             }
         });
     }
+
     /**
      * @name joinCourse
      * @desc Add the course into course list
@@ -76,6 +87,7 @@ function CoursesCtrl($scope, $ionicModal, $ionicPopup, CourseList, CourseInfo, P
         CourseList.addCourse($scope.course, $scope.uid, $scope.profile.name);
         $scope.closesearchModal();
     }
+
     /**
      * @name onCourseDelete
      * @desc Delete the course from course list

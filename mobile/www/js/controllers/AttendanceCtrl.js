@@ -5,6 +5,9 @@
  * define AttendanceCtrl
  */
 
+/**
+ * Load Attendance record and take attendance 
+ */
 function AttendanceCtrl($scope, $ionicPopup, Attendance) {
     $scope.records = Attendance.getRecord($scope.uid);
     $scope.control = Attendance.getControl(new Date().toDateString());

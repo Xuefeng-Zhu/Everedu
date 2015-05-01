@@ -5,6 +5,9 @@
  * define ChatCtrl
  */
 
+/**
+ * Load chat data and send message
+ */
 function ChatCtrl($scope, $ionicScrollDelegate, Chat) {
     $scope.chat = Chat();
 
