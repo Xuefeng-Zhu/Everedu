@@ -18,10 +18,20 @@
 				</ion-radio>
 			</div>
 			<div class="item tabs tabs-secondary tabs-icon-left">
+				<!-- Submit selection -->
 				<a class="tab-item" ng-click="submit()">
 					<i class="icon ion-android-checkbox-outline"></i>
 					Submit
 				</a>
+				<a class="tab-item" ui-sref="app.quizDetail({status: status, quizID: quizID-1})" ng-if="quizID > 0">
+					<i class="icon ion-arrow-left-c"></i>
+					Prev Question
+				</a>
+				<a class="tab-item" ng-if="quizID == 0">
+					<i class="icon ion-happy-outline"></i>
+					Beginning of Quiz List
+				</a>
+				<!-- Go to next Question -->
 				<a class="tab-item" ui-sref="app.quizDetail({status: status, quizID: quizID+1})" ng-if="quizID < quizs.length-1">
 					<i class="icon ion-arrow-right-c"></i>
 					Next Question
