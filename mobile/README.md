@@ -36,3 +36,14 @@ ionic platform add ios/android
 ionic build ios/android
 ionic emulate ios/android
 ```
+
+## Credit
+This project is built with following tools
+
++ [Angularjs] (https://angularjs.org/)
++ [AngularFire] (https://www.firebase.com/docs/web/libraries/angular/index.html)
++ [angularfire-seed] (https://github.com/firebase/angularfire-seed)
++ [Firebase] (https://www.firebase.com/)
++ [Ionic] (http://ionicframework.com/)
++ [Simple WebTRC] (http://simplewebrtc.com/)
++ [ui-route] (https://github.com/angular-ui/ui-router)
