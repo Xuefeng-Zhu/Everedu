@@ -1,27 +1,23 @@
 # Everedu
 
 ## Overview 
-Everedu is a helpful education application. It tries to improve the lecture engagement and interaction between instructors and students. Everedu includes a web application for instructors and a mobile application for students. 
+Everedu is a helpful education application. Its objective is to improve the lecture engagement and interaction between instructors and students. Everedu includes a web application for instructors and a mobile application for students. 
 
 The main features of this application include
 
 + Take lecture attendance
-+ A better platform letting students asking questions during lecture
-+ Reply questions through webRTC
 + Pop quiz during the lecture to exam learning effectiveness
-+ Save quizzes for future review
-+ Collaboration on course note
++ Reply questions or present through WebRTC
++ A chatting room allowing students asking questions during lecture
 
 ## Development tools
 + Angularjs for front-end user interaction 
-+ ionic for building cross platform mobile application
-+ Firebase for backend system 
-+ Optional Evernote API for data storage
-
++ Ionic for building cross platform mobile application
++ Firebase for backend service 
 
 ## Timeline
 + First Week
-	+ read document of library I am going to use
+	+ Read documentation of each library 
 	+ Implement basic user interface for mobile client
 		+ Implement the login interface
 		+ Implement the course list interface
@@ -36,7 +32,7 @@ The main features of this application include
 		+ Implement attendance interface
 		+ Implement quiz interface  
 + Third Week
-	+ Integrate Firebase into the both motile client and web client
+	+ Integrate Firebase into the both mobile client and web client
 		+ Be able to login in using Firebase account system
 		+ Be able to store/fetch data using Firebase
 			+ Get profile data
@@ -45,7 +41,13 @@ The main features of this application include
 			+ Get quiz list and quiz question detail, and submit quiz selection  
 		+ Generate View based on real time data
 + Fourth Week
-	+ Work on asking question feature
-	+ Work on Reply questions through webRTC
-	+ Work on Collaboration on course note
-	+ Work on save quiz to Evernote
+	+ Implement asking question and messaging through chatting room
+	+ Implement repling questions and presenting through WebRTC
+	+ Fix bug for selecting class in mobile client
+	+ Improve quiz navigation and bugs fix for submitting result
+
+	
+## Future Plan
++ Collaboration on course note
++ Save quiz or note to Evernote
++ Discussion Forum
