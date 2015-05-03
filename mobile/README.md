@@ -1,5 +1,6 @@
 
 # EverEdu Mobile
+Check out the [demo] (http://xuefeng-zhu.github.io/Everedu/student)
 
 ## Overview
 EverEdu Mobile is client developed specially for students' usage.
