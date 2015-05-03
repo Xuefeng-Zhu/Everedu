@@ -1,5 +1,7 @@
 # EverEdu Web
 
+Check out the [Demo] (http://xuefeng-zhu.github.io/Everedu/instructor)
+
 ## Overview
 EverEdu Mobile is client developed specially for instructors' usage.
 
@@ -14,6 +16,7 @@ Students are able to use this application for
 + Chat with others students in real time
 
 Thie EverEdu Instructor Client is built on open source project [rdash-angular](https://github.com/rdash/rdash-angular). The backend is powered by Firebase with Angularfire.
+
 
 ## Usage (from [rdash-angular](https://github.com/rdash/rdash-angular))
 ### Requirements
