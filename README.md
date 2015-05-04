@@ -1,4 +1,8 @@
 # Everedu
+[Instructor Client Demo] (http://xuefeng-zhu.github.io/Everedu/instructor)
+
+[Student Client Demo] (http://xuefeng-zhu.github.io/Everedu/student)
+
 
 ## Overview 
 Everedu is a helpful education application. Its objective is to improve the lecture engagement and interaction between instructors and students. Everedu includes a web application for instructors and a mobile application for students. 
