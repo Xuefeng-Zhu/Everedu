@@ -14,6 +14,17 @@ The main features of this application include
 + Reply questions or present through WebRTC
 + A chatting room allowing students asking questions during lecture
 
+## Deployment
+Modify following code in `js/services/firebase.utils`
+
+```
+angular.module('firebase.utils', ['firebase'])
+    .constant('FBURL', 'https://everedu.firebaseio.com/')
+```
+Set the FBURL to your own [Firebase](https://www.firebase.com/) instance
+
+Host the site on Github Page or Firebase Host
+
 ## Development tools
 + Angularjs for front-end user interaction 
 + Ionic for building cross platform mobile application
