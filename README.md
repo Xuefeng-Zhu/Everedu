@@ -34,3 +34,6 @@ Host the site on Github Page or Firebase Host
 + Collaboration on course note
 + Save quiz or note to Evernote
 + Discussion Forum
+
+## License
+MIT
