@@ -1,7 +1,7 @@
 # Everedu
-[Instructor Client Demo] (http://xuefeng-zhu.github.io/Everedu/instructor)
+[Instructor Client Demo] (https://xuefeng-zhu.github.io/Everedu/instructor)
 
-[Student Client Demo] (http://xuefeng-zhu.github.io/Everedu/student)
+[Student Client Demo] (https://xuefeng-zhu.github.io/Everedu/student)
 
 
 ## Overview 
