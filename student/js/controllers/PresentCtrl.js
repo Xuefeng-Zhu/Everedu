@@ -79,7 +79,7 @@ function PresentCtrl($scope, Presentation) {
             // code from https://github.com/HenrikJoreteg/SimpleWebRTC
             localVideoEl: 'localVideo',
             autoRequestMedia: true,
-            url: 'everedu-webrtc.herokuapp.com:80'
+            url: 'everedu-webrtc.herokuapp.com'
         });
 
         // wait until webrtc is ready
